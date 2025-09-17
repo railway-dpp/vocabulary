@@ -5,63 +5,63 @@
 ### Product ID
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |productID|
 | URL            ||
 | Expected Value ||
 
 ### DPP ID
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |dppID|
 | URL            ||
 | Expected Value ||
 
 ### Granulartiy
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |granularity|
 | URL            ||
 | Expected Value ||
 
 ### Base DPP Schema Version
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |baseDppSchemaVersion|
 | URL            ||
 | Expected Value ||
 
 ### Sector Data Model Version
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |sectorDataModelVersion|
 | URL            ||
 | Expected Value ||
 
 ### Status of the DPP
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |statusOfTheDpp|
 | URL            ||
 | Expected Value ||
 
 ### Last Update
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |lastUpdate|
 | URL            ||
 | Expected Value ||
 
 ### Economic Operator ID
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |economicOperatorId|
 | URL            ||
 | Expected Value ||
 
 ### Facility ID 
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |facilityId|
 | URL            ||
 | Expected Value ||
 
@@ -71,48 +71,56 @@
 ### Rail Profil
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |railProfil|
 | URL            ||
 | Expected Value ||
 
 ### Steel Grade
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |steelGrade|
 | URL            ||
 | Expected Value ||
 
 ### Length
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |length|
 | URL            ||
 | Expected Value ||
 
 ### Weight
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |weight|
 | URL            ||
 | Expected Value ||
 
 ## EPD Environmental Product Declaration
+
+### EPD ID
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |epdID|
 | URL            ||
 | Expected Value ||
 
 ### Climate Change Effects - Total
 | Key            | Value|
 |----------------|------|
-| Term           ||
+| Term           |climatChangeEffectTotal|
 | URL            ||
 | Expected Value ||
 
 
 ## DOPC Declaration of Product Conformity
 
+### DOPC ID
+| Key            | Value|
+|----------------|------|
+| Term           |dopcId|
+| URL            ||
+| Expected Value ||
 
 
 
