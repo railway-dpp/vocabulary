@@ -3,6 +3,9 @@
 ## DPP Digital Product Passport
 
 ### Product ID
+unique product identifier means a unique string of characters for the identification of a product that also enables a web link to the digital product passport.
+
+According ESPR Art.2 (30): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1781&qid=1719580391746
 | Key            | Value|
 |----------------|------|
 | Term           |productID|
@@ -10,6 +13,7 @@
 | Expected Value ||
 
 ### DPP ID
+
 | Key            | Value|
 |----------------|------|
 | Term           |dppID|
@@ -52,6 +56,11 @@
 | Expected Value ||
 
 ### Economic Operator ID
+
+unique operator identifier’ means a unique string of characters for the identification of an actor involved in a product’s value chain
+
+According ESPR Art.2 (31): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1781&qid=1719580391746
+
 | Key            | Value|
 |----------------|------|
 | Term           |economicOperatorId|
