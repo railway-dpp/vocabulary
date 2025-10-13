@@ -6,63 +6,63 @@
 | Key            | Value|
 |----------------|------|
 | Term           |productID|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#product-id|
 | Expected Value ||
 
 ### DPP ID
 | Key            | Value|
 |----------------|------|
 | Term           |dppID|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#dpp-id|
 | Expected Value ||
 
 ### Granulartiy
 | Key            | Value|
 |----------------|------|
 | Term           |granularity|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#granulartiy|
 | Expected Value ||
 
 ### Base DPP Schema Version
 | Key            | Value|
 |----------------|------|
 | Term           |baseDppSchemaVersion|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#base-dpp-schema-version|
 | Expected Value ||
 
 ### Sector Data Model Version
 | Key            | Value|
 |----------------|------|
 | Term           |sectorDataModelVersion|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#sector-data-model-version|
 | Expected Value ||
 
 ### Status of the DPP
 | Key            | Value|
 |----------------|------|
 | Term           |statusOfTheDpp|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#status-of-the-dpp|
 | Expected Value ||
 
 ### Last Update
 | Key            | Value|
 |----------------|------|
 | Term           |lastUpdate|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#last-update|
 | Expected Value ||
 
 ### Economic Operator ID
 | Key            | Value|
 |----------------|------|
 | Term           |economicOperatorId|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#economic-operator-id|
 | Expected Value ||
 
 ### Facility ID 
 | Key            | Value|
 |----------------|------|
 | Term           |facilityId|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#facility-id|
 | Expected Value ||
 
 
@@ -72,28 +72,28 @@
 | Key            | Value|
 |----------------|------|
 | Term           |railProfil|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#rail-profil|
 | Expected Value ||
 
 ### Steel Grade
 | Key            | Value|
 |----------------|------|
 | Term           |steelGrade|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#steel-grade|
 | Expected Value ||
 
 ### Length
 | Key            | Value|
 |----------------|------|
 | Term           |length|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#length|
 | Expected Value ||
 
 ### Weight
 | Key            | Value|
 |----------------|------|
 | Term           |weight|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#weight|
 | Expected Value ||
 
 ## EPD Environmental Product Declaration
@@ -102,14 +102,14 @@
 | Key            | Value|
 |----------------|------|
 | Term           |epdID|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#epd-id|
 | Expected Value ||
 
 ### Climate Change Effects - Total
 | Key            | Value|
 |----------------|------|
 | Term           |climatChangeEffectTotal|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#epd-environmental-product-declaration|
 | Expected Value ||
 
 
@@ -119,7 +119,7 @@
 | Key            | Value|
 |----------------|------|
 | Term           |dopcId|
-| URL            ||
+| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#dopc-id|
 | Expected Value ||
 
 
