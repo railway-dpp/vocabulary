@@ -1,4 +1,181 @@
 # Credential Vocabulary
+# 5. Data Model
+
+```mermaid
+classDiagram
+
+    class ProductGroup {
+        <<DataElementCollection>>
+        id
+        economicOperatorId [legalPersonID]
+        versionsOfStandards  
+        railProfile
+        steelGrade
+        length
+        weight
+    }
+
+    class DPP {
+        <<GeneralHeader>>
+        id
+        productId
+        productGroupId
+        name
+        granularity
+        versionOfTheDppSchema
+        economicOperatorId [legalPersonID]
+        facilityId
+    }
+        
+    class DoPC {
+        <<credentialSubject>>
+        id
+        economicOperatorId [legalPersonID]
+        productGroupId
+        epdId
+    
+    }
+    
+    class EPD {
+        <<credentialSubject>>
+        id
+        productGroupID
+        economicOperatorId [legalPersonID]
+        globalWarmingPotentialProduction
+    }
+    
+    class Transport {
+        <<credentialSubject>>
+        id
+        transportBatchId
+        locationDeparture
+        locationArriva
+        serviceProviderId [legalPersonID] 
+        globalWarmingPotentialTransport 
+    }
+
+    class TransportBatch {
+        <<credentialSubject>>
+        transportBatchId
+        economicOperatorId [legalPersonID]
+        locationDeparture
+        locationArrival
+        dppId      
+    }
+    
+    class LegalPerson {
+        <<credentialSubject>>
+        id
+        legalName
+        legalIdentifier
+        legalFormType
+        registeredAddress
+        registrationDate
+        legalEntityStatus
+        legalRepresentativeId [naturalPersonId]
+        legalEntityActivity
+        contactPoint
+    }
+
+    class NaturalPerson {
+        <<credentialSubject>>
+        id
+        givenName
+        familyName
+        gender
+        birthDate
+        domicile		
+    }
+    
+    class PowerOfAttorney {
+       <<credentialSubject>>
+       delegatee
+       proxiedPermissions
+    }
+
+    class EU-DPPRegistry {
+        <<registry>>
+        dppId [Unique Identifier of the DPP instance]
+    }
+
+    class DppSchema {
+        <<dictonary>>
+        dppSchemaId
+        version
+        templateName
+        
+    }
+    
+    class EU_CompanyRegister {
+        <<registry>>
+        economicOperatorId [legalPersonID]
+    }
+
+    DPP "0..n" --* "1" ProductGroup
+    ProductGroup "1..n" --o "0..1" EPD
+    ProductGroup "1..n" --o "0..1" DoPC
+    LegalPerson "1" *-- "0..n" ProductGroup
+    DPP "0..n" -- "1" LegalPerson
+    DPP "0..n" -- "0..1" EU-DPPRegistry
+    LegalPerson "1" *-- "0..n" NaturalPerson : represents
+    PowerOfAttorney "0..n" --* "1" NaturalPerson
+    DoPC "0..n" --* "1" LegalPerson
+    EPD "0..n" --* "1" LegalPerson
+    Transport "0..n" --* "1" TransportBatch
+    DPP "1..n" --o "0..n" TransportBatch
+    DppSchema "1" -- "0..n" DPP
+    EU_CompanyRegister "1" -- "0..n" LegalPerson
+```
+
+# Description data model
+This chapter contains describtion of the classes visualized in the diagramm
+
+## Natural Person
+A trustworthy issuer E.g. country authority issues an eID to a natural person with attributes described in https://oid.spherity.com/eucc#NaturalPerson according EU Directive 25/2025 https://eur-lex.europa.eu/eli/dir/2025/25/oj/eng/pdf
+
+
+## Legal Person
+A trustworthy issuer E.g. country authority issues an eID (LPID) to a legal person with attributes described in https://oid.spherity.com/eucc#LegalPerson according EU Directive 25/2025 https://eur-lex.europa.eu/eli/dir/2025/25/oj/eng/pdf
+A LPID will be issued to a natural person registered as procurist in the commercial registry.
+
+## Power of Attorney
+Natural Person with LPID can issue company internally Power of Attorney to employees. Details described in https://oid.spherity.com/poa
+
+## EU Company Registry
+Company can be discovered via BRIS Business Register Interconected System https://e-justice.europa.eu/topics/registers-business-insolvency-land/business-registers-search-company-eu_en
+
+## Product Group
+
+## DoPC (Decleration of Product Confirmity)
+
+## EPD (Environmental Product Decleration)
+
+## DPP Schema
+
+## DPP (Digital Product Passport)
+class DPP (DigitalProductPassport) is the main entity and represents container for all relevant DPP data. 
+dppId: Unique identifier of a Digital Product Passport e.g. URI "uri://www.voestalpine.com/dpp/111.."
+productId: Identifies Product e.g. "gtin:111.."
+name: e.g. "dppRailUno" 
+granularity: Describes production level <model;batch;item>
+versionOfTheDppSchema: Describes what schema in what version was used to issue DPP [public, standard]
+economicOperatorId: legalPersonId or alternitivly VAT e.g. "vat:ATU14187100"
+facilityId: Place of production e.g. GLN number "gln:9110015801378"
+
+## EU-DPP Registry
+
+## TransportBatch
+
+## Transport
+DB Cargo needs data to provide transporte service as discribed in class "Transport". Via idProductPassport and via Product Model following data will be provided: 
+-  productWeight (via idProductPassport, via idProductModel)
+-  productLenght (via idProductPassport, via IdProductModel)
+-  Items
+Items describes the number of rails that have to be transported.
+
+
+
+
 
 ## DPP Digital Product Passport
 
