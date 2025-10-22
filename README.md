@@ -5,63 +5,77 @@
 classDiagram
 
     class ProductGroup {
-        <<DataElementCollection>>
+        <<credentialSubject>>
         id
-        economicOperatorId [legalPersonID]
         versionsOfStandards  
         railProfile
         steelGrade
-        length
-        weight
+        
+    }
+ 
+    class National Business Register {
+        <<registry>>
+        companyRegisterNumber 
     }
 
-    class DPP {
-        <<GeneralHeader>>
-        id
-        productId
-        productGroupId
-        name
-        granularity
-        versionOfTheDppSchema
-        economicOperatorId [legalPersonID]
-        facilityId
-    }
-        
-    class DoPC {
+class Transport {
         <<credentialSubject>>
         id
-        economicOperatorId [legalPersonID]
-        productGroupId
-        epdId
-    
-    }
-    
-    class EPD {
-        <<credentialSubject>>
-        id
-        productGroupID
-        economicOperatorId [legalPersonID]
-        globalWarmingPotentialProduction
-    }
-    
-    class Transport {
-        <<credentialSubject>>
-        id
-        transportBatchId
-        locationDeparture
-        locationArriva
-        serviceProviderId [legalPersonID] 
+        serviceProviderId
+        timeDeparture
+        timeArrival
         globalWarmingPotentialTransport 
     }
 
     class TransportBatch {
         <<credentialSubject>>
-        transportBatchId
-        economicOperatorId [legalPersonID]
+        id
         locationDeparture
-        locationArrival
-        dppId      
+        locationArrival     
     }
+
+    class DPP {
+        <<credentialSubject>>
+        id
+        productId
+        name
+        granularity
+        facilityId
+        length
+        weight
+    }
+    
+    class EU-DPP Registry {
+        <<registry>>
+        dppRegistrationNumber
+    }
+
+
+    class DppSchema {
+        <<dictonary>>
+        id
+        version
+        templateName
+        
+    }    
+    class DoPC {
+        <<credentialSubject>>
+        id
+        deglerationOfProductConformity
+    }
+    
+    class EPD Production {
+        <<credentialSubject>>
+        id
+        globalWarmingPotentialProduction
+    }
+    
+    class EPD Transport {
+        <<credentialSubject>>
+        id
+        globalWarmingPotentialProduction
+    }
+    
     
     class LegalPerson {
         <<credentialSubject>>
@@ -88,547 +102,273 @@ classDiagram
     }
     
     class PowerOfAttorney {
-       <<credentialSubject>>
-       delegatee
-       proxiedPermissions
+        <<credentialSubject>>
+        id
+        delegatee
+        proxiedPermissions
     }
 
-    class EU-DPPRegistry {
-        <<registry>>
-        dppId [Unique Identifier of the DPP instance]
-    }
+   
 
-    class DppSchema {
-        <<dictonary>>
-        dppSchemaId
-        version
-        templateName
-        
-    }
-    
-    class EU_CompanyRegister {
-        <<registry>>
-        economicOperatorId [legalPersonID]
-    }
-
-    DPP "0..n" --* "1" ProductGroup
-    ProductGroup "1..n" --o "0..1" EPD
-    ProductGroup "1..n" --o "0..1" DoPC
-    LegalPerson "1" *-- "0..n" ProductGroup
-    DPP "0..n" -- "1" LegalPerson
-    DPP "0..n" -- "0..1" EU-DPPRegistry
-    LegalPerson "1" *-- "0..n" NaturalPerson : represents
-    PowerOfAttorney "0..n" --* "1" NaturalPerson
-    DoPC "0..n" --* "1" LegalPerson
-    EPD "0..n" --* "1" LegalPerson
-    Transport "0..n" --* "1" TransportBatch
-    DPP "1..n" --o "0..n" TransportBatch
-    DppSchema "1" -- "0..n" DPP
-    EU_CompanyRegister "1" -- "0..n" LegalPerson
+    EPD Transport "1" --> "0--n" Transport : transportId
+    Transport "0..n" <-- "1" TransportBatch : transportBatchId
+    DPP "1..n" <-- "0..n" TransportBatch : dppId
+    DPP "0..n" <-- "0..1" EU-DPPRegistry : dppId
+    DPP "0..n" <-- "1" ProductGroup : productGroupId
+    ProductGroup "1..n" <-- "0..1" EPD Production : productGroupId
+    EPD Production "1..n" <-- "0..1" DoPC : epdId
+    LegalPerson "1" <-- "0..n" ProductGroup : economicOperatorId
+    LegalPerson "1" --> "0..n" NaturalPerson : natrualPersonId
+    PowerOfAttorney "0..n" <-- "1" NaturalPerson : delegateeId
+    DppSchema "1" --> "0..n" DPP : dppSchemaID
+    National Business Register "1" <-- "0..n" LegalPerson : legalPersonId
 ```
 
 # Description data model
-This chapter contains describtion of the classes visualized in the diagramm
+Note: Class descriptions are aligned to the DPP System Standard (link follows) semantic/functional model (data model, product property and information product structures, transactional timestamps, dictionary/units, stakeholders, and EU DPP Registry). Rail-specific acceptance/mechanical context for steel grades references EN 13674-1. Inline citations point to attached files and pages.
 
-## Natural Person
-A trustworthy issuer E.g. country authority issues an eID to a natural person with attributes described in https://oid.spherity.com/eucc#NaturalPerson according EU Directive 25/2025 https://eur-lex.europa.eu/eli/dir/2025/25/oj/eng/pdf
-
-
-## Legal Person
-A trustworthy issuer E.g. country authority issues an eID (LPID) to a legal person with attributes described in https://oid.spherity.com/eucc#LegalPerson according EU Directive 25/2025 https://eur-lex.europa.eu/eli/dir/2025/25/oj/eng/pdf
-A LPID will be issued to a natural person registered as procurist in the commercial registry.
-
-## Power of Attorney
-Natural Person with LPID can issue company internally Power of Attorney to employees. Details described in https://oid.spherity.com/poa
-
-## EU Company Registry
-Company can be discovered via BRIS Business Register Interconected System https://e-justice.europa.eu/topics/registers-business-insolvency-land/business-registers-search-company-eu_en
-
-## Product Group
-
-## DoPC (Decleration of Product Confirmity)
-
-## EPD (Environmental Product Decleration)
-
-## DPP Schema
-
-## DPP (Digital Product Passport)
-class DPP (DigitalProductPassport) is the main entity and represents container for all relevant DPP data. 
-dppId: Unique identifier of a Digital Product Passport e.g. URI "uri://www.voestalpine.com/dpp/111.."
-productId: Identifies Product e.g. "gtin:111.."
-name: e.g. "dppRailUno" 
-granularity: Describes production level <model;batch;item>
-versionOfTheDppSchema: Describes what schema in what version was used to issue DPP [public, standard]
-economicOperatorId: legalPersonId or alternitivly VAT e.g. "vat:ATU14187100"
-facilityId: Place of production e.g. GLN number "gln:9110015801378"
-
-## EU-DPP Registry
-
-## TransportBatch
-
-## Transport
-DB Cargo needs data to provide transporte service as discribed in class "Transport". Via idProductPassport and via Product Model following data will be provided: 
--  productWeight (via idProductPassport, via idProductModel)
--  productLenght (via idProductPassport, via IdProductModel)
--  Items
-Items describes the number of rails that have to be transported.
-
-
-
-
-
-## DPP Digital Product Passport
-
-### Product ID
-unique product identifier means a unique string of characters for the identification of a product that also enables a web link to the digital product passport.
-
-According ESPR Art.2 (30): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1781&qid=1719580391746
-| Key            | Value|
-|----------------|------|
-| Term           |productID|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#product-id|
-| Expected Value ||
-
-### DPP ID
-
-| Key            | Value|
-|----------------|------|
-| Term           |dppID|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#dpp-id|
-| Expected Value ||
-
-### Granulartiy
-| Key            | Value|
-|----------------|------|
-| Term           |granularity|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#granulartiy|
-| Expected Value ||
-
-### Base DPP Schema Version
-| Key            | Value|
-|----------------|------|
-| Term           |baseDppSchemaVersion|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#base-dpp-schema-version|
-| Expected Value ||
-
-### Sector Data Model Version
-| Key            | Value|
-|----------------|------|
-| Term           |sectorDataModelVersion|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#sector-data-model-version|
-| Expected Value ||
-
-### Status of the DPP
-| Key            | Value|
-|----------------|------|
-| Term           |statusOfTheDpp|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#status-of-the-dpp|
-| Expected Value ||
-
-### Last Update
-| Key            | Value|
-|----------------|------|
-| Term           |lastUpdate|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#last-update|
-| Expected Value ||
-
-### Economic Operator ID
-
-unique operator identifier’ means a unique string of characters for the identification of an actor involved in a product’s value chain
-
-According ESPR Art.2 (31): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1781&qid=1719580391746
-
-| Key            | Value|
-|----------------|------|
-| Term           |economicOperatorId|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#economic-operator-id|
-| Expected Value ||
-
-### Facility ID 
-| Key            | Value|
-|----------------|------|
-| Term           |facilityId|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#facility-id|
-| Expected Value ||
-
-
-## Vignol railway rails 46kg/m and above 
-
-### Rail Profil
-| Key            | Value|
-|----------------|------|
-| Term           |railProfil|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#rail-profil|
-| Expected Value ||
-
-### Steel Grade
-| Key            | Value|
-|----------------|------|
-| Term           |steelGrade|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#steel-grade|
-| Expected Value ||
-
-### Length
-| Key            | Value|
-|----------------|------|
-| Term           |length|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#length|
-| Expected Value ||
-
-### Weight
-| Key            | Value|
-|----------------|------|
-| Term           |weight|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#weight|
-| Expected Value ||
-
-## EPD Environmental Product Declaration
-
-### EPD ID
-| Key            | Value|
-|----------------|------|
-| Term           |epdID|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#epd-id|
-| Expected Value ||
-
-### Climate Change Effects - Total
-| Key            | Value|
-|----------------|------|
-| Term           |climatChangeEffectTotal|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#epd-environmental-product-declaration|
-| Expected Value ||
-
-
-## DOPC Declaration of Product Conformity
-
-### DOPC ID
-| Key            | Value|
-|----------------|------|
-| Term           |dopcId|
-| URL            |https://github.com/railway-dpp/vocabulary/edit/main/README.md#dopc-id|
-| Expected Value ||
-
-
-# AI - DPP Schiene Vocabulary (Classes and Properties from the Mermaid Data Model)
-
-# DPP Rail Vocabulary (Classes and Properties from the Mermaid Data Model, revised with CEN DPP Interoperability)
-
-Note: Only classes and properties defined in the provided Mermaid data model are listed. Where property descriptions are missing, authoritative context is taken from the CEN/CLC/JTC 24 DPP Interoperability draft for DPP-related semantics (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 1; 8; 21; 28) and from EN 13674-1 for rail-specific fields (Schinene Norm EN 13674-1.pdf, 1; 19; 20; 27; 120).
+*Note: All classes receive per default an id provided by json ld context "@id". Therefore class id's are not listet in following vocabulary. 
 
 ## ProductGroup
+Groups rail products that share essential technical characteristics (e.g., railProfile and steelGrade) so they can be managed and assessed consistently within a DPP. In the DPP System Standard (link follows) model, such characteristics are represented as product properties in a Product property collection; related certificates and documents are modeled as information products DPP System Standard (link follows). Steel grade-related acceptance and mechanical conformity are validated via tensile strength/elongation testing procedures (predictive equations, periodic tests, corrective actions) in EN 13674-1 (Schinene Norm EN 13674-1.pdf, 19).
 
-### id
-Unique identifier of the product group.
-| Key | Value |
-|-----|------|
-| Term | id |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#id |
-| Expected Value | string (UUID/URI) |
-
-### economicOperatorId
-Unique identifier of the economic operator (LegalPerson), as part of DPP data structures and stakeholders in DPP context (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 21).
-| Key | Value |
-|-----|------|
-| Term | economicOperatorId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#economicOperatorId |
-| Expected Value | string (e.g., LPID, VAT) |
 
 ### versionsOfStandards
-Applied versions of relevant standards (e.g., EN 13674-1 for rail products; DPP interoperability as per CEN/CLC/JTC 24 framework) (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 4).
+List of standards and versions applied to define properties and documentation; aligns with the repository model where property templates are defined “in a standard” and units are controlled DPP System Standard (link follows).
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | versionsOfStandards |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#versionsOfStandards |
-| Expected Value | array of string (standard identifiers and versions) |
+| Expected Value | array of string |
 
 ### railProfile
-Standardized rail profile for Vignole rails ≥ 46 kg/m as specified by EN 13674-1 (Schinene Norm EN 13674-1.pdf, 1). Annex G notes additional profiles in the 2017 revision (Schinene Norm EN 13674-1.pdf, 120).
+Domain-specific product property identifying the rail profile; model as a single-valued product property in the Product property collection DPP System Standard (link follows).
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | railProfile |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#railProfile |
-| Expected Value | string (e.g., “60E1”, “54E1”) |
+| Expected Value | string (e.g., 60E1) |
 
 ### steelGrade
-Steel grade of the rail; acceptance and mechanical properties are governed by EN 13674-1 (Schinene Norm EN 13674-1.pdf, 20; 27). The 2017 revision added grades R370CrHT and R400HT (Schinene Norm EN 13674-1.pdf, 120). Heat-treated grade hardness variation is controlled (Schinene Norm EN 13674-1.pdf, 19).
+Domain-specific product property indicating the steel grade; mechanical conformity is validated by tensile strength/elongation testing per EN 13674-1 clause 8.7 (Schinene Norm EN 13674-1.pdf, 19). Represent as a single-valued product property DPP System Standard (link follows).
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | steelGrade |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#steelGrade |
-| Expected Value | string (e.g., R260, R350HT, R370CrHT, R400HT) |
+| Expected Value | string (e.g., R260, R350HT) |
 
-### length
-Technical length of the rail; provided as a technical attribute in DPP data dictionaries (example: Length with unit mm) (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 28).
+
+## National Business Register
+Represents a national registry where companies are identified by a companyRegisterNumber. Such identifiers support unambiguous identification of the authorized operator (“who”: legal entity responsible for a product-related event) in the transactional model DPP System Standard (link follows).
+
+### companyRegisterNumber
+Registered company number used to identify the LegalPerson/economic operator.
 | Key | Value |
-|-----|------|
-| Term | length |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#length |
-| Expected Value | number (mm or m) |
-
-### weight
-Total mass of the rail(s); derived from profile-specific mass-per-metre (per EN 13674-1 scope for rails ≥ 46 kg/m) (Schinene Norm EN 13674-1.pdf, 1).
-| Key | Value |
-|-----|------|
-| Term | weight |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#weight |
-| Expected Value | number (kg) |
-
-## DPP
-
-### id
-Unique identifier of the Digital Product Passport instance; DPP sits within the CEN/CLC/JTC 24 interoperability framework (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 1).
-| Key | Value |
-|-----|------|
-| Term | id |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#id |
-| Expected Value | string (URI) |
-
-### productId
-Unique product identifier (e.g., GTIN) for the product covered by the DPP.
-| Key | Value |
-|-----|------|
-| Term | productId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#productId |
-| Expected Value | string (e.g., gtin:…) |
-
-### productGroupId
-Reference to the associated ProductGroup for the DPP.
-| Key | Value |
-|-----|------|
-| Term | productGroupId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#productGroupId |
-| Expected Value | string (UUID/URI) |
-
-### name
-Human-readable name or label of the DPP instance.
-| Key | Value |
-|-----|------|
-| Term | name |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#name |
+|---|---|
+| Term | companyRegisterNumber |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#companyRegisterNumber |
 | Expected Value | string |
 
-### granularity
-Granularity of the DPP’s scope (model, batch, item); addressed in semantic lifecycle staging (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 8).
-| Key | Value |
-|-----|------|
-| Term | granularity |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#granularity |
-| Expected Value | enum (“model” | “batch” | “item”) |
-
-### versionOfTheDppSchema
-Version of the DPP schema used to issue the passport.
-| Key | Value |
-|-----|------|
-| Term | versionOfTheDppSchema |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#versionOfTheDppSchema |
-| Expected Value | string (e.g., “1.0.0”) |
-
-### economicOperatorId
-Identifier of the economic operator responsible for the DPP entry (stakeholder roles are defined in the DPP context) (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 21).
-| Key | Value |
-|-----|------|
-| Term | economicOperatorId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#economicOperatorId |
-| Expected Value | string |
-
-### facilityId
-Identifier of the production facility (e.g., GLN).
-| Key | Value |
-|-----|------|
-| Term | facilityId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#facilityId |
-| Expected Value | string |
-
-## DoPC
-
-### id
-Unique identifier of the Declaration of Product Conformity.
-| Key | Value |
-|-----|------|
-| Term | id |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#id |
-| Expected Value | string |
-
-### economicOperatorId
-Identifier of the issuing economic operator.
-| Key | Value |
-|-----|------|
-| Term | economicOperatorId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#economicOperatorId |
-| Expected Value | string |
-
-### productGroupId
-Reference to the product group being declared conformant.
-| Key | Value |
-|-----|------|
-| Term | productGroupId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#productGroupId |
-| Expected Value | string |
-
-### epdId
-Reference to the linked Environmental Product Declaration (EPD), if applicable.
-| Key | Value |
-|-----|------|
-| Term | epdId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#epdId |
-| Expected Value | string |
-
-## EPD
-
-### id
-Unique identifier of the Environmental Product Declaration.
-| Key | Value |
-|-----|------|
-| Term | id |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#id |
-| Expected Value | string |
-
-### productGroupID
-Reference to the ProductGroup covered by the EPD.
-| Key | Value |
-|-----|------|
-| Term | productGroupID |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#productGroupID |
-| Expected Value | string |
-
-### economicOperatorId
-Identifier of the economic operator responsible for the EPD.
-| Key | Value |
-|-----|------|
-| Term | economicOperatorId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#economicOperatorId |
-| Expected Value | string |
-
-### globalWarmingPotentialProduction
-Global warming potential (CO₂e) for production phase as declared in EPD methodology.
-| Key | Value |
-|-----|------|
-| Term | globalWarmingPotentialProduction |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#globalWarmingPotentialProduction |
-| Expected Value | number (e.g., kg CO₂e per declared unit) |
 
 ## Transport
-
-### id
-Unique identifier of the transport record.
-| Key | Value |
-|-----|------|
-| Term | id |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#id |
-| Expected Value | string |
-
-### transportBatchId
-Reference to the TransportBatch (shipment batch).
-| Key | Value |
-|-----|------|
-| Term | transportBatchId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#transportBatchId |
-| Expected Value | string |
-
-### locationDeparture
-Departure location (address or coordinates).
-| Key | Value |
-|-----|------|
-| Term | locationDeparture |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#locationDeparture |
-| Expected Value | string |
-
-### locationArriva
-Arrival location (note: property spelled “Arriva” in the model).
-| Key | Value |
-|-----|------|
-| Term | locationArriva |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#locationArriva |
-| Expected Value | string |
+Models a transport credential subject with the responsible provider and time-bound movement data. Times align with the transactional model’s Event time; shipping is a typical business step (CEN-CLC-JTC 24-WG 4_N911_DRAFT..., 16). Service provider is a stakeholder role in the DPP context DPP System Standard (link follows).
 
 ### serviceProviderId
-Identifier of the transport service provider (LegalPerson). “Service provider” is defined as any natural or legal person providing an information service; DPP also defines a “digital product passport service provider” role (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 21).
+Identifier of the service provider responsible for the transport (stakeholder role “service provider”) DPP System Standard (link follows).
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | serviceProviderId |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#serviceProviderId |
 | Expected Value | string |
 
-### globalWarmingPotentialTransport
-Global warming potential (CO₂e) of transport.
+### timeDeparture
+Departure event time; corresponds to Event time in the transactional model DPP System Standard (link follows).
 | Key | Value |
-|-----|------|
+|---|---|
+| Term | timeDeparture |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#timeDeparture |
+| Expected Value | string (ISO 8601 date-time) |
+
+### timeArrival
+Arrival event time; corresponds to Event time in the transactional model DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | timeArrival |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#timeArrival |
+| Expected Value | string (ISO 8601 date-time) |
+
+### globalWarmingPotentialTransport
+Environmental impact metric for the transport stage, represented as a product/transport property with controlled units (unit handling via repository model) DPP System Standard (link follows).
+| Key | Value |
+|---|---|
 | Term | globalWarmingPotentialTransport |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#globalWarmingPotentialTransport |
-| Expected Value | number (kg CO₂e) |
+| Expected Value | number (e.g., kg CO2e) |
+
 
 ## TransportBatch
-
-### transportBatchId
-Unique identifier of the transport batch.
-| Key | Value |
-|-----|------|
-| Term | transportBatchId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#transportBatchId |
-| Expected Value | string |
-
-### economicOperatorId
-Identifier of the responsible economic operator.
-| Key | Value |
-|-----|------|
-| Term | economicOperatorId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#economicOperatorId |
-| Expected Value | string |
+Represents a shipment batch aggregating one or more Transport records for a given DPP, capturing origin/destination to support traceability across movements (aligns with the data model’s identification pattern for data elements) DPP System Standard (link follows).
 
 ### locationDeparture
-Departure location.
+Departure location of the batch (address/coordinates) as a data element value DPP System Standard (link follows).
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | locationDeparture |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#locationDeparture |
 | Expected Value | string |
 
 ### locationArrival
-Arrival location.
+Arrival location of the batch DPP System Standard (link follows).
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | locationArrival |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#locationArrival |
 | Expected Value | string |
 
-### dppId
-Identifier of the associated DPP instance.
+
+## DPP
+The Digital Product Passport is the digital container for relevant product data and properties. The DPP System Standard (link follows) data model enumerates core metadata: ID, Product_id, Product Name, Product type (granularity), etc. DPP System Standard (link follows). Product properties such as length and weight are expressed via data elements with units from controlled vocabularies per the repository model DPP System Standard (link follows).
+
+### productId
+Identifier of the product linked to the DPP DPP System Standard (link follows).
 | Key | Value |
-|-----|------|
-| Term | dppId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#dppId |
+|---|---|
+| Term | productId |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#productId |
 | Expected Value | string |
+
+### name
+Human-readable product/DPP name DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | name |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#name |
+| Expected Value | string |
+
+### granularity
+Scope of the DPP instance; corresponds to Product type values Model, Batch, Item DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | granularity |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#granularity |
+| Expected Value | enum (“model” | “batch” | “item”) |
+
+### facilityId
+Identifier of the production facility; modeled as a data element value DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | facilityId |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#facilityId |
+| Expected Value | string (e.g., GLN) |
+
+### length
+Product length; single-valued property with controlled unit mapping DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | length |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#length |
+| Expected Value | number (mm/m) |
+
+### weight
+Product weight; single-valued property with controlled unit mapping DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | weight |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#weight |
+| Expected Value | number (kg) |
+
+
+## EU-DPP Registry
+Represents the EU Digital Product Passport Registry, where DPPs are registered to support discovery, conformity, and market surveillance. Registration is called out as an interoperability-relevant moment and responsibility for economic operators DPP System Standard (link follows).
+
+### dppRegistrationNumber
+Registration identifier of the DPP in the EU DPP Registry DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | dppRegistrationNumber |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#dppRegistrationNumber |
+| Expected Value | string |
+
+
+## DppSchema
+Captures the schema/profile used by DPP instances. In the DPP System Standard (link follows) model, property templates, standards, and units reside in open data dictionary repositories that schemas reference DPP System Standard (link follows); data elements carry dictionary references DPP System Standard (link follows).
+
+### version
+Version of the schema.
+| Key | Value |
+|---|---|
+| Term | version |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#version |
+| Expected Value | string |
+
+### templateName
+Human-readable template name/profile.
+| Key | Value |
+|---|---|
+| Term | templateName |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#templateName |
+| Expected Value | string |
+
+
+## DoPC
+Declaration of Product Conformity modeled as a credential subject. In the DPP System Standard (link follows) semantic model, such declarations are information products with metadata (issuer, issue date) and references DPP System Standard (link follows).
+
+### deglerationOfProductConformity
+Reference or statement to the declaration of product conformity; model as an information product link DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | deglerationOfProductConformity |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#deglerationOfProductConformity |
+| Expected Value | string/URI |
+
+
+## EPD Production
+Environmental Product Declaration for production-stage impacts; EPDs can be modeled as information products and/or product properties depending on data granularity DPP System Standard (link follows).
+
+### globalWarmingPotentialProduction
+Declared GWP for production; represent as a property with a controlled unit DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | globalWarmingPotentialProduction |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#globalWarmingPotentialProduction |
+| Expected Value | number (e.g., kg CO2e/unit) |
+
+
+## EPD Transport
+Environmental Product Declaration for transport-stage impacts; complements EPD Production and ties to logistics events DPP System Standard (link follows).
+
+### globalWarmingPotentialProduction
+Declared GWP allocated to transport (per the model’s field name); represent with controlled unit DPP System Standard (link follows).
+| Key | Value |
+|---|---|
+| Term | globalWarmingPotentialProduction |
+| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#globalWarmingPotentialProduction |
+| Expected Value | number (e.g., kg CO2e/unit) |
+
 
 ## LegalPerson
-
-### id
-Unique identifier of the legal person.
-| Key | Value |
-|-----|------|
-| Term | id |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#id |
-| Expected Value | string |
+Represents an organization acting as economic operator or service provider. The transactional model identifies the authorized operator (“who”: legal entity) for events, and stakeholder roles include service providers and DPP service providers DPP System Standard (link follows).
 
 ### legalName
 Registered legal name.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | legalName |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalName |
 | Expected Value | string |
 
 ### legalIdentifier
-Official identifier (e.g., company register number, LPID).
+Official identifier (e.g., company register number, VAT, LPID).
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | legalIdentifier |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalIdentifier |
 | Expected Value | string |
 
 ### legalFormType
-Legal form (e.g., AG, GmbH).
+Legal form/type of organization.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | legalFormType |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalFormType |
 | Expected Value | string |
@@ -636,7 +376,7 @@ Legal form (e.g., AG, GmbH).
 ### registeredAddress
 Registered address.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | registeredAddress |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#registeredAddress |
 | Expected Value | string |
@@ -644,57 +384,51 @@ Registered address.
 ### registrationDate
 Date of registration.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | registrationDate |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#registrationDate |
 | Expected Value | string (YYYY-MM-DD) |
 
 ### legalEntityStatus
-Status of the entity (e.g., active/inactive).
+Operational status (e.g., active/inactive).
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | legalEntityStatus |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalEntityStatus |
 | Expected Value | string |
 
 ### legalRepresentativeId
-Identifier of the legal representative (NaturalPerson).
+Identifier of the authorized  representing the entity.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | legalRepresentativeId |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalRepresentativeId |
 | Expected Value | string |
 
 ### legalEntityActivity
-Activity or sector description.
+Sector/activity description.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | legalEntityActivity |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalEntityActivity |
 | Expected Value | string |
 
 ### contactPoint
-Contact details (e.g., email, phone).
+Contact details.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | contactPoint |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#contactPoint |
 | Expected Value | string |
 
-## NaturalPerson
 
-### id
-Unique identifier of the natural person.
-| Key | Value |
-|-----|------|
-| Term | id |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#id |
-| Expected Value | string |
+## NaturalPerson
+Represents an individual participating in DPP processes (e.g., as legal representative). The transactional model’s “who” dimension captures responsibility and authorization DPP System Standard (link follows).
 
 ### givenName
 Given name.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | givenName |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#givenName |
 | Expected Value | string |
@@ -702,15 +436,15 @@ Given name.
 ### familyName
 Family name.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | familyName |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#familyName |
 | Expected Value | string |
 
 ### gender
-Gender (if maintained).
+Gender.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | gender |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#gender |
 | Expected Value | string |
@@ -718,7 +452,7 @@ Gender (if maintained).
 ### birthDate
 Date of birth.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | birthDate |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#birthDate |
 | Expected Value | string (YYYY-MM-DD) |
@@ -726,85 +460,44 @@ Date of birth.
 ### domicile
 Place of domicile.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | domicile |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#domicile |
 | Expected Value | string |
 
+
 ## PowerOfAttorney
+Represents authorization linking a NaturalPerson to delegated permissions to act for a LegalPerson, reflecting the transactional model’s “authorized operator (who)” DPP System Standard (link follows).
 
 ### delegatee
-Delegatee (natural person receiving the power of attorney).
+Identifier of the delegatee (NaturalPerson) receiving authorization.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | delegatee |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#delegatee |
-| Expected Value | string (naturalPersonId) |
+| Expected Value | string |
 
 ### proxiedPermissions
 Granted permissions.
 | Key | Value |
-|-----|------|
+|---|---|
 | Term | proxiedPermissions |
 | URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#proxiedPermissions |
 | Expected Value | array of string |
 
-## EU-DPPRegistry
 
-### dppId
-Unique identifier of the DPP instance registered.
-| Key | Value |
-|-----|------|
-| Term | dppId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#dppId |
-| Expected Value | string (URI) |
+References in context:
+- DPP data model and metadata (ID, Product_id, Product Name, Product type/granularity) DPP System Standard (link follows)
+- Data element/value pattern; dictionary reference DPP System Standard (link follows)
+- Product property collection and Information product collection DPP System Standard (link follows)
+- Transactional model (authorized operator “who”, business steps like shipping; event and record time) (DPP System Standard (link follows)
+- Repository/dictionary architecture (standards, units, property templates) DPP System Standard (link follows)
+- EU DPP Registry registration as interoperability moment DPP System Standard (link follows)
+- Stakeholders and service provider roles DPP System Standard (link follows)
+- EN 13674-1 tensile strength/elongation acceptance framework for rail steels (Schinene Norm EN 13674-1.pdf, 19)
 
-## DppSchema
 
-### dppSchemaId
-Identifier of the DPP schema.
-| Key | Value |
-|-----|------|
-| Term | dppSchemaId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#dppSchemaId |
-| Expected Value | string |
 
-### version
-Schema version.
-| Key | Value |
-|-----|------|
-| Term | version |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#version |
-| Expected Value | string |
-
-### templateName
-Template name.
-| Key | Value |
-|-----|------|
-| Term | templateName |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#templateName |
-| Expected Value | string |
-
-## EU_CompanyRegister
-
-### economicOperatorId
-Identifier of the economic operator (LegalPerson), discoverable via EU company registers (contextual to DPP stakeholder identification, see stakeholder roles) (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 21).
-| Key | Value |
-|-----|------|
-| Term | economicOperatorId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#economicOperatorId |
-| Expected Value | string |
-
-References used in this vocabulary:
-- EN 13674-1 scope and applicability to Vignole rails ≥ 46 kg/m (Schinene Norm EN 13674-1.pdf, 1)
-- Heat-treated rail hardness variation requirement (Schinene Norm EN 13674-1.pdf, 19)
-- Acceptance tests framework (Schinene Norm EN 13674-1.pdf, 20)
-- Tensile testing method and sampling (Schinene Norm EN 13674-1.pdf, 27; 28)
-- Significant technical changes: added rail profiles and grades (Schinene Norm EN 13674-1.pdf, 120)
-- DPP system context and framework (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 1)
-- Semantic interoperability and lifecycle aspects underpinning granularity (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 8)
-- Stakeholder roles, service provider and DPP service provider definitions (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 21)
-- Data dictionary example showing Length attribute and unit (CEN-CLC-JTC 24-WG 4_N911_DRAFT - Module 4 - JT024005_2025-02-28.pdf, 28)
 
 
 
