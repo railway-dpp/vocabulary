@@ -86,10 +86,21 @@ class Transport {
         registeredAddress
         registrationDate
         legalEntityStatus
-        legalRepresentativeId [naturalPersonId]
+        legalRepresentativeId 
         legalEntityActivity
         contactPoint
     }
+
+ 
+    
+    class LegalRepresentative {
+        <<anonymous>>
+        id
+        role
+        scopeOfRepresentation
+        
+    }
+
 
     class NaturalPerson {
         <<credentialSubject>>
@@ -104,22 +115,22 @@ class Transport {
     class PowerOfAttorney {
         <<credentialSubject>>
         id
-        delegatee
         proxiedPermissions
     }
 
    
 
     EPD Transport "1" --> "0--n" Transport : transportId
-    Transport "0..n" <-- "1" TransportBatch : transportBatchId
+    Transport "0..n" --> "1" TransportBatch : transportBatchId
     DPP "1..n" <-- "0..n" TransportBatch : dppId
     DPP "0..n" <-- "0..1" EU-DPPRegistry : dppId
-    DPP "0..n" <-- "1" ProductGroup : productGroupId
+    DPP "0..n" --> "1" ProductGroup : productGroupId
     ProductGroup "1..n" <-- "0..1" EPD Production : productGroupId
     EPD Production "1..n" <-- "0..1" DoPC : epdId
     LegalPerson "1" <-- "0..n" ProductGroup : economicOperatorId
-    LegalPerson "1" --> "0..n" NaturalPerson : natrualPersonId
-    PowerOfAttorney "0..n" <-- "1" NaturalPerson : delegateeId
+    LegalPerson "1" --> "0..n" LegalRepresentative : legalRepresentativeId
+    LegalRepresentative "1" --> "0..n" NaturalPerson : naturalPersonId
+    PowerOfAttorney "0..n" --> "1" NaturalPerson : delegateeId
     DppSchema "1" --> "0..n" DPP : dppSchemaID
     National Business Register "1" <-- "0..n" LegalPerson : legalPersonId
 ```
