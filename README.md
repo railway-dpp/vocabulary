@@ -149,7 +149,7 @@ List of standards and versions applied to define properties and documentation; a
 | Key | Value |
 |---|---|
 | Term | versionsOfStandards |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#versionsOfStandards |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#versionsOfStandards |
 | Expected Value | array of string |
 
 ### railProfile
@@ -157,7 +157,7 @@ Domain-specific product property identifying the rail profile; model as a single
 | Key | Value |
 |---|---|
 | Term | railProfile |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#railProfile |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#railProfile |
 | Expected Value | string (e.g., 60E1) |
 
 ### steelGrade
@@ -165,7 +165,7 @@ Domain-specific product property indicating the steel grade; mechanical conformi
 | Key | Value |
 |---|---|
 | Term | steelGrade |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#steelGrade |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#steelGrade |
 | Expected Value | string (e.g., R260, R350HT) |
 
 
@@ -177,7 +177,7 @@ Registered company number used to identify the LegalPerson/economic operator.
 | Key | Value |
 |---|---|
 | Term | companyRegisterNumber |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#companyRegisterNumber |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#companyRegisterNumber |
 | Expected Value | string |
 
 
@@ -189,7 +189,7 @@ Identifier of the service provider responsible for the transport (stakeholder ro
 | Key | Value |
 |---|---|
 | Term | serviceProviderId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#serviceProviderId |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#serviceProviderId |
 | Expected Value | string |
 
 ### timeDeparture
@@ -197,7 +197,7 @@ Departure event time; corresponds to Event time in the transactional model DPP S
 | Key | Value |
 |---|---|
 | Term | timeDeparture |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#timeDeparture |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#timeDeparture |
 | Expected Value | string (ISO 8601 date-time) |
 
 ### timeArrival
@@ -205,7 +205,7 @@ Arrival event time; corresponds to Event time in the transactional model DPP Sys
 | Key | Value |
 |---|---|
 | Term | timeArrival |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#timeArrival |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#timeArrival |
 | Expected Value | string (ISO 8601 date-time) |
 
 ### globalWarmingPotentialTransport
@@ -213,7 +213,7 @@ Environmental impact metric for the transport stage, represented as a product/tr
 | Key | Value |
 |---|---|
 | Term | globalWarmingPotentialTransport |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#globalWarmingPotentialTransport |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#globalWarmingPotentialTransport |
 | Expected Value | number (e.g., kg CO2e) |
 
 
@@ -225,7 +225,7 @@ Departure location of the batch (address/coordinates) as a data element value DP
 | Key | Value |
 |---|---|
 | Term | locationDeparture |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#locationDeparture |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#locationDeparture |
 | Expected Value | string |
 
 ### locationArrival
@@ -233,7 +233,7 @@ Arrival location of the batch DPP System Standard (link follows).
 | Key | Value |
 |---|---|
 | Term | locationArrival |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#locationArrival |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#locationArrival |
 | Expected Value | string |
 
 
@@ -245,7 +245,7 @@ Identifier of the product linked to the DPP DPP System Standard (link follows).
 | Key | Value |
 |---|---|
 | Term | productId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#productId |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#productId |
 | Expected Value | string |
 
 ### name
@@ -253,7 +253,7 @@ Human-readable product/DPP name DPP System Standard (link follows).
 | Key | Value |
 |---|---|
 | Term | name |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#name |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#name |
 | Expected Value | string |
 
 ### granularity
@@ -261,7 +261,7 @@ Scope of the DPP instance; corresponds to Product type values Model, Batch, Item
 | Key | Value |
 |---|---|
 | Term | granularity |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#granularity |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#granularity |
 | Expected Value | enum (“model” | “batch” | “item”) |
 
 ### facilityId
@@ -269,7 +269,7 @@ Identifier of the production facility; modeled as a data element value DPP Syste
 | Key | Value |
 |---|---|
 | Term | facilityId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#facilityId |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#facilityId |
 | Expected Value | string (e.g., GLN) |
 
 ### length
@@ -277,7 +277,7 @@ Product length; single-valued property with controlled unit mapping DPP System S
 | Key | Value |
 |---|---|
 | Term | length |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#length |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#length |
 | Expected Value | number (mm/m) |
 
 ### weight
@@ -285,7 +285,7 @@ Product weight; single-valued property with controlled unit mapping DPP System S
 | Key | Value |
 |---|---|
 | Term | weight |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#weight |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#weight |
 | Expected Value | number (kg) |
 
 
@@ -297,7 +297,7 @@ Registration identifier of the DPP in the EU DPP Registry DPP System Standard (l
 | Key | Value |
 |---|---|
 | Term | dppRegistrationNumber |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#dppRegistrationNumber |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#dppRegistrationNumber |
 | Expected Value | string |
 
 
@@ -309,7 +309,7 @@ Version of the schema.
 | Key | Value |
 |---|---|
 | Term | version |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#version |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#version |
 | Expected Value | string |
 
 ### templateName
@@ -317,7 +317,7 @@ Human-readable template name/profile.
 | Key | Value |
 |---|---|
 | Term | templateName |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#templateName |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#templateName |
 | Expected Value | string |
 
 
@@ -329,7 +329,7 @@ Reference or statement to the declaration of product conformity; model as an inf
 | Key | Value |
 |---|---|
 | Term | deglerationOfProductConformity |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#deglerationOfProductConformity |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#deglerationOfProductConformity |
 | Expected Value | string/URI |
 
 
@@ -341,7 +341,7 @@ Declared GWP for production; represent as a property with a controlled unit DPP 
 | Key | Value |
 |---|---|
 | Term | globalWarmingPotentialProduction |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#globalWarmingPotentialProduction |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#globalWarmingPotentialProduction |
 | Expected Value | number (e.g., kg CO2e/unit) |
 
 
@@ -353,7 +353,7 @@ Declared GWP allocated to transport (per the model’s field name); represent wi
 | Key | Value |
 |---|---|
 | Term | globalWarmingPotentialProduction |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#globalWarmingPotentialProduction |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#globalWarmingPotentialProduction |
 | Expected Value | number (e.g., kg CO2e/unit) |
 
 
@@ -365,7 +365,7 @@ Registered legal name.
 | Key | Value |
 |---|---|
 | Term | legalName |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalName |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#legalName |
 | Expected Value | string |
 
 ### legalIdentifier
@@ -373,7 +373,7 @@ Official identifier (e.g., company register number, VAT, LPID).
 | Key | Value |
 |---|---|
 | Term | legalIdentifier |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalIdentifier |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#legalIdentifier |
 | Expected Value | string |
 
 ### legalFormType
@@ -381,7 +381,7 @@ Legal form/type of organization.
 | Key | Value |
 |---|---|
 | Term | legalFormType |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalFormType |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#legalFormType |
 | Expected Value | string |
 
 ### registeredAddress
@@ -389,7 +389,7 @@ Registered address.
 | Key | Value |
 |---|---|
 | Term | registeredAddress |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#registeredAddress |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#registeredAddress |
 | Expected Value | string |
 
 ### registrationDate
@@ -397,7 +397,7 @@ Date of registration.
 | Key | Value |
 |---|---|
 | Term | registrationDate |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#registrationDate |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#registrationDate |
 | Expected Value | string (YYYY-MM-DD) |
 
 ### legalEntityStatus
@@ -405,7 +405,7 @@ Operational status (e.g., active/inactive).
 | Key | Value |
 |---|---|
 | Term | legalEntityStatus |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalEntityStatus |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#legalEntityStatus |
 | Expected Value | string |
 
 ### legalRepresentativeId
@@ -413,7 +413,7 @@ Identifier of the authorized  representing the entity.
 | Key | Value |
 |---|---|
 | Term | legalRepresentativeId |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalRepresentativeId |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#legalRepresentativeId |
 | Expected Value | string |
 
 ### legalEntityActivity
@@ -421,7 +421,7 @@ Sector/activity description.
 | Key | Value |
 |---|---|
 | Term | legalEntityActivity |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#legalEntityActivity |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#legalEntityActivity |
 | Expected Value | string |
 
 ### contactPoint
@@ -429,7 +429,7 @@ Contact details.
 | Key | Value |
 |---|---|
 | Term | contactPoint |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#contactPoint |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#contactPoint |
 | Expected Value | string |
 
 
@@ -441,7 +441,7 @@ Given name.
 | Key | Value |
 |---|---|
 | Term | givenName |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#givenName |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#givenName |
 | Expected Value | string |
 
 ### familyName
@@ -449,7 +449,7 @@ Family name.
 | Key | Value |
 |---|---|
 | Term | familyName |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#familyName |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#familyName |
 | Expected Value | string |
 
 ### gender
@@ -457,7 +457,7 @@ Gender.
 | Key | Value |
 |---|---|
 | Term | gender |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#gender |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#gender |
 | Expected Value | string |
 
 ### birthDate
@@ -465,7 +465,7 @@ Date of birth.
 | Key | Value |
 |---|---|
 | Term | birthDate |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#birthDate |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#birthDate |
 | Expected Value | string (YYYY-MM-DD) |
 
 ### domicile
@@ -473,7 +473,7 @@ Place of domicile.
 | Key | Value |
 |---|---|
 | Term | domicile |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#domicile |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#domicile |
 | Expected Value | string |
 
 
@@ -485,7 +485,7 @@ Identifier of the delegatee (NaturalPerson) receiving authorization.
 | Key | Value |
 |---|---|
 | Term | delegatee |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#delegatee |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#delegatee |
 | Expected Value | string |
 
 ### proxiedPermissions
@@ -493,7 +493,7 @@ Granted permissions.
 | Key | Value |
 |---|---|
 | Term | proxiedPermissions |
-| URL | https://github.com/railway-dpp/vocabulary/edit/main/README.md#proxiedPermissions |
+| URL | https://github.com/railway-dpp/vocabulary?tab=readme-ov-file#proxiedPermissions |
 | Expected Value | array of string |
 
 
