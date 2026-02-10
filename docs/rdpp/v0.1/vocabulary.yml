@@ -1,6 +1,6 @@
 vocab:
   - id: rddp
-    value: https://github.com/railway-dpp/vocabulary#
+    value: https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#
     context: https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1
 
 prefix:

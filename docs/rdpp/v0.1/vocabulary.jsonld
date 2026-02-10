@@ -1,6 +1,6 @@
 {
     "@context": {
-        "rddp": "https://github.com/railway-dpp/vocabulary#",
+        "rddp": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#",
         "locn": "http://www.w3.org/ns/locn#",
         "cred": "https://w3.org/2018/credentials#",
         "dc": "http://purl.org/dc/terms/",
@@ -66,7 +66,7 @@
             "@type": "@id"
         }
     },
-    "@id": "https://github.com/railway-dpp/vocabulary#",
+    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#",
     "@type": "owl:Ontology",
     "dc:title": {
         "@value": "Railway Digital Product Passport Vocabulary",

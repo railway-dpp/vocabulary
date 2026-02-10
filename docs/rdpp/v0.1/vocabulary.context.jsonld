@@ -3,176 +3,176 @@
         "@protected": true,
         "CredentialSubject": "https://w3.org/2018/credentials#CredentialSubject",
         "ProductGroup": {
-            "@id": "https://github.com/railway-dpp/vocabulary#ProductGroup",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#ProductGroup",
             "@context": {
                 "@protected": true,
                 "versionOfStandard": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#versionOfStandard",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#versionOfStandard",
                     "@type": "http://www.w3.org/2001/XMLSchema#string",
                     "@container": "@set"
                 },
                 "railProfile": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#railProfile",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#railProfile",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 },
                 "steelGrade": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#steelGrade",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#steelGrade",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 },
                 "economicOperatorId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#economicOperatorId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#economicOperatorId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 }
             }
         },
         "Transport": {
-            "@id": "https://github.com/railway-dpp/vocabulary#Transport",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#Transport",
             "@context": {
                 "@protected": true,
                 "serviceProviderId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#serviceProviderId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#serviceProviderId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 },
                 "timeDeparture": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#timeDeparture",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#timeDeparture",
                     "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
                 },
                 "timeArrival": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#timeArrival",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#timeArrival",
                     "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
                 },
                 "globalWarmingPotentialTransport": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#globalWarmingPotentialTransport",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#globalWarmingPotentialTransport",
                     "@type": "http://www.w3.org/2001/XMLSchema#decimal"
                 },
                 "transportBatchId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#transportBatchId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#transportBatchId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 }
             }
         },
         "TransportBatch": {
-            "@id": "https://github.com/railway-dpp/vocabulary#TransportBatch",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#TransportBatch",
             "@context": {
                 "@protected": true,
                 "locationDeparture": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#locationDeparture",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#locationDeparture",
                     "@type": "@id"
                 },
                 "locationArrival": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#locationArrival",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#locationArrival",
                     "@type": "@id"
                 },
                 "dppId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#dppId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#dppId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 }
             }
         },
         "DPP": {
-            "@id": "https://github.com/railway-dpp/vocabulary#DPP",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#DPP",
             "@context": {
                 "@protected": true,
                 "productId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#productId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#productId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 },
                 "name": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#name",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#name",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 },
                 "granularity": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#granularity",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#granularity",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 },
                 "facilityId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#facilityId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#facilityId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 },
                 "length": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#length",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#length",
                     "@type": "http://www.w3.org/2001/XMLSchema#decimal"
                 },
                 "weight": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#weight",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#weight",
                     "@type": "http://www.w3.org/2001/XMLSchema#decimal"
                 },
                 "productGroupId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#productGroupId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#productGroupId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 },
                 "dppSchemaId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#dppSchemaId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#dppSchemaId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 }
             }
         },
         "EUDPPRegistry": {
-            "@id": "https://github.com/railway-dpp/vocabulary#EUDPPRegistry",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#EUDPPRegistry",
             "@context": {
                 "@protected": true,
                 "dppRegistrationNumber": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#dppRegistrationNumber",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#dppRegistrationNumber",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 }
             }
         },
         "DppSchema": {
-            "@id": "https://github.com/railway-dpp/vocabulary#DppSchema",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#DppSchema",
             "@context": {
                 "@protected": true,
                 "version": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#version",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#version",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 },
                 "templateName": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#templateName",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#templateName",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 }
             }
         },
         "DoPC": {
-            "@id": "https://github.com/railway-dpp/vocabulary#DoPC",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#DoPC",
             "@context": {
                 "@protected": true,
                 "deglerationOfProductConformity": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#deglerationOfProductConformity",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#deglerationOfProductConformity",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 },
                 "epdId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#epdId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#epdId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 }
             }
         },
         "EPDProduction": {
-            "@id": "https://github.com/railway-dpp/vocabulary#EPDProduction",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#EPDProduction",
             "@context": {
                 "@protected": true,
                 "productGroupId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#productGroupId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#productGroupId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 },
                 "globalWarmingPotentialProduction": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#globalWarmingPotentialProduction",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#globalWarmingPotentialProduction",
                     "@type": "http://www.w3.org/2001/XMLSchema#decimal"
                 }
             }
         },
         "EPDTransport": {
-            "@id": "https://github.com/railway-dpp/vocabulary#EPDTransport",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#EPDTransport",
             "@context": {
                 "@protected": true,
                 "globalWarmingPotentialProduction": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#globalWarmingPotentialProduction",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#globalWarmingPotentialProduction",
                     "@type": "http://www.w3.org/2001/XMLSchema#decimal"
                 },
                 "transportId": {
-                    "@id": "https://github.com/railway-dpp/vocabulary#transportId",
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#transportId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 }
             }
         },
-        "Location": "https://github.com/railway-dpp/vocabulary#Location"
+        "Location": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#Location"
     }
 }
