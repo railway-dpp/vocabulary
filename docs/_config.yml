@@ -1,0 +1,9 @@
+# Jekyll configuration for GitHub Pages
+plugins:
+  - jekyll-redirect-from
+
+# Disable Jekyll processing for certain files
+include:
+  - _redirects
+
+# Whitelist the redirect-from plugin (it's allowed by GitHub Pages by default)
