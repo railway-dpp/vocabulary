@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Railway Digital Product Passport Vocabulary</title>
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
+    <script>
+        function remove_status_remark() {
+            const sotd = document.getElementById("sotd");
+            const p = sotd.getElementsByTagName('p')[0];
+            sotd.removeChild(p);
+        }
+    </script>
+    <script class="remove">
+        var respecConfig = {
+            localBiblio: {},
+            specStatus: "base",
+            shortName: "ebw/v0.1",
+            latestVersion: "https://ebw-vocabulary.spherity.dev/ebw/v0.1",
+            thisVersion: "https://ebw-vocabulary.spherity.dev/ebw/v0.1",
+            doJsonLd: true,
+            editors: [{
+                    name: "Dominic Hurni",
+                    company: "SBB",
+                    companyURL: "https://www.sbb.ch/de",
+                },
+                {
+                    name: "Sebastian Dechant",
+                    company: "Spherity",
+                    companyURL: "https://www.spherity.com",
+                },
+                {
+                    name: "Ronald Koenig",
+                    company: "Spherity",
+                    companyURL: "https://www.spherity.com",
+                },
+                {
+                    name: "Martin Westerkamp",
+                    company: "Spherity",
+                    companyURL: "https://www.spherity.com",
+                }
+            ],
+            alternateFormats: [{
+                    uri: "vocabulary.ttl",
+                    label: "Turtle"
+                },
+                {
+                    uri: "vocabulary.jsonld",
+                    label: "JSON-LD"
+                }
+            ],
+            postProcess: [remove_status_remark],
+            inlineCSS: true,
+            doRDFa: false,
+            noIDLIn: true,
+            noLegacyStyle: false
+        };
+    </script>
+    <style type="text/css">
+        dl.terms dt {
+            float: left;
+            clear: left;
+            width: 10vw;
+        }
+
+        dl.terms dd {
+            margin-left: 15vw;
+        }
+
+        dl.terms dd:after {
+            content: '';
+            display: block;
+            clear: both;
+            margin-bottom: 5px;
+        }
+
+        table.rdfs-definition td {
+            vertical-align: top;
+            margin-right: 2em;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        /* code {
+          color: red;
+        } */
+
+        .term_definitions section {
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: darkgrey;
+        }
+
+        .annoy {
+            background: hsla(40, 100%, 50%, 0.95);
+            color: black;
+            padding: .75em 1em;
+            border: red;
+            border-style: solid none;
+            box-shadow: 0 2px 8px black;
+            text-align: center;
+        }
+
+        summary {
+            font-weight: normal !important;
+        }
+    </style>
+    <link href="vocabulary.jsonld" rel="alternate" type="application/ld+json">
+    <link href="vocabulary.ttl" rel="alternate" type="text/turtle">
+</head>
+
+<body>
+    <section id="abstract">
+        <p>This document describes the <span property="dc:title" id="title">Railway Digital Product Passport Vocabulary</span>, i.e.,
+            the <span property="dc:description" id="description">Vocabulary for Digital Product Passports (DPP) in the railway steel domain, aligned with the DPP System Standard semantic and functional data model and EN 13674-1 for rail steel acceptance.
+            </span>.
+        </p>
+        <p>Alternate versions of the vocabulary definition exist in
+            <a rel="alternate" href="vocabulary.ttl">Turtle</a> and
+            <a rel="alternate" href="vocabulary.jsonld">JSON-LD</a>.
+        </p>
+        <dl>
+            <dt>Published:</dt>
+            <dd>
+                <time property="dc:date" id="time">2026-02-10</time>
+            </dd>
+            <dt>Version Info:</dt>
+            <dd>0.1</dd>
+            <dt id="see_also">See Also:</dt>
+        </dl>
+    </section>
+    <section id="sotd">
+        <p>
+            This vocabulary has been defined by the railway dpp project and provides
+            an experimental RDFS vocabulary for the Electronic Attestation of Attributes of the railway dpp project.
+            Comments regarding this document are welcome. Please file issues
+            directly on <a href="https://github.com/railway-dpp/vocab/issues/">GitHub</a>, or send them to
+            <a href="mailto:example.com">tbd</a>.
+        </p>
+    </section>
+
+    <section id="conformance"></section>
+    <section>
+        <h2>Namespaces</h2>
+        <p>This specification makes use of the following namespaces:</p>
+        <dl class="terms" id="namespaces">
+            <dt><code>rddp</code></dt>
+            <dd><code>https://github.com/railway-dpp/vocabulary#</code></dd>
+            <dt><code>locn</code></dt>
+            <dd><code>http://www.w3.org/ns/locn#</code></dd>
+            <dt><code>cred</code></dt>
+            <dd><code>https://w3.org/2018/credentials#</code></dd>
+            <dt><code>dc</code></dt>
+            <dd><code>http://purl.org/dc/terms/</code></dd>
+            <dt><code>owl</code></dt>
+            <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+            <dt><code>rdf</code></dt>
+            <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+            <dt><code>rdfs</code></dt>
+            <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+            <dt><code>xsd</code></dt>
+            <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+        </dl>
+    </section>
+
+    <section>
+        <h2>Specification of terms</h2>
+        <h3>Data model</h3>
+        <p>The following class diagram shows the data structure of the credential subjects using the vocabulary defined in this specification.</p>
+        <figure id="figure1">
+            <img src="class-diagram.svg" alt="class diagram">
+            <figcaption>
+                Class diagram of vocabulary.<br> A separate stand-alone <a href="class-diagram.svg">SVG Version</a> of the diagram is also available.
+            </figcaption>
+        </figure>
+    </section>
+
+    <section>
+        <h2><code>@context</code> files</h2>
+        <p>The following <code>@context</code> files make use of the terms defined in this specification:</p>
+        <ul id="contexts">
+            <li><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a>
+                <details>
+                    <summary>term list</summary>
+                    <ul>
+                        <li><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject<code></code></code></a></li>
+                        <li><a href="#DPP"><code>DPP<code></code></code></a></li>
+                        <li><a href="#DoPC"><code>DoPC<code></code></code></a></li>
+                        <li><a href="#DppSchema"><code>DppSchema<code></code></code></a></li>
+                        <li><a href="#EPDProduction"><code>EPDProduction<code></code></code></a></li>
+                        <li><a href="#EPDTransport"><code>EPDTransport<code></code></code></a></li>
+                        <li><a href="#EUDPPRegistry"><code>EUDPPRegistry<code></code></code></a></li>
+                        <li><a href="#Location"><code>Location<code></code></code></a></li>
+                        <li><a href="#ProductGroup"><code>ProductGroup<code></code></code></a></li>
+                        <li><a href="#Transport"><code>Transport<code></code></code></a></li>
+                        <li><a href="#TransportBatch"><code>TransportBatch<code></code></code></a></li>
+                        <li><a href="#deglerationOfProductConformity"><code>deglerationOfProductConformity<code></code></code></a></li>
+                        <li><a href="#dppId"><code>dppId<code></code></code></a></li>
+                        <li><a href="#dppRegistrationNumber"><code>dppRegistrationNumber<code></code></code></a></li>
+                        <li><a href="#dppSchemaId"><code>dppSchemaId<code></code></code></a></li>
+                        <li><a href="#economicOperatorId"><code>economicOperatorId<code></code></code></a></li>
+                        <li><a href="#epdId"><code>epdId<code></code></code></a></li>
+                        <li><a href="#facilityId"><code>facilityId<code></code></code></a></li>
+                        <li><a href="#globalWarmingPotentialProduction"><code>globalWarmingPotentialProduction<code></code></code></a></li>
+                        <li><a href="#globalWarmingPotentialTransport"><code>globalWarmingPotentialTransport<code></code></code></a></li>
+                        <li><a href="#granularity"><code>granularity<code></code></code></a></li>
+                        <li><a href="#length"><code>length<code></code></code></a></li>
+                        <li><a href="#locationArrival"><code>locationArrival<code></code></code></a></li>
+                        <li><a href="#locationDeparture"><code>locationDeparture<code></code></code></a></li>
+                        <li><a href="#name"><code>name<code></code></code></a></li>
+                        <li><a href="#productGroupId"><code>productGroupId<code></code></code></a></li>
+                        <li><a href="#productId"><code>productId<code></code></code></a></li>
+                        <li><a href="#railProfile"><code>railProfile<code></code></code></a></li>
+                        <li><a href="#serviceProviderId"><code>serviceProviderId<code></code></code></a></li>
+                        <li><a href="#steelGrade"><code>steelGrade<code></code></code></a></li>
+                        <li><a href="#templateName"><code>templateName<code></code></code></a></li>
+                        <li><a href="#timeArrival"><code>timeArrival<code></code></code></a></li>
+                        <li><a href="#timeDeparture"><code>timeDeparture<code></code></code></a></li>
+                        <li><a href="#transportBatchId"><code>transportBatchId<code></code></code></a></li>
+                        <li><a href="#transportId"><code>transportId<code></code></code></a></li>
+                        <li><a href="#version"><code>version<code></code></code></a></li>
+                        <li><a href="#versionOfStandard"><code>versionOfStandard<code></code></code></a></li>
+                        <li><a href="#weight"><code>weight<code></code></code></a></li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </section>
+
+    <section id="term_definitions">
+        <h2>Term definitions</h2>
+
+        <section id="property_definitions" class="term_definitions">
+            <h3>Property definitions</h3>
+            <p>The following are property definitions in the <code>rddp</code> namespace.</p>
+            <section id="versionOfStandard">
+                <h4><code>versionOfStandard</code></h4>
+                <p><em>Version of Standard</em></p>
+                <div>List of standards and versions applied to define product properties and documentation. This aligns with the repository and dictionary model of the DPP System Standard, where property templates are defined within standards and units are controlled through shared vocabularies.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#ProductGroup"><code>ProductGroup</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code>
+                        <p>In a JSON-LD representation, values to this property are supposed to be represented in the form of a JSON array, even if there is just a single value.</p>
+                    </dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="railProfile">
+                <h4><code>railProfile</code></h4>
+                <p><em>Rail Profile</em></p>
+                <div>Domain-specific product property identifying the rail profile. It is modeled as a single-valued product property within the Product Property Collection of the DPP System Standard.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#ProductGroup"><code>ProductGroup</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="steelGrade">
+                <h4><code>steelGrade</code></h4>
+                <p><em>Steel Grade</em></p>
+                <div>Domain-specific product property indicating the steel grade. Mechanical conformity is validated through tensile strength and elongation testing procedures defined in EN 13674-1, clause 8.7, including predictive equations, periodic testing, and corrective actions.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#ProductGroup"><code>ProductGroup</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="serviceProviderId">
+                <h4><code>serviceProviderId</code></h4>
+                <p><em>Service Provider ID</em></p>
+                <div>Identifier of the service provider responsible for the transport. The service provider is modeled as a stakeholder role within the DPP System Standard.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#Transport"><code>Transport</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="timeDeparture">
+                <h4><code>timeDeparture</code></h4>
+                <p><em>Time Departure</em></p>
+                <div>Departure event time corresponding to the transactional model's event time. Used to represent when a transport activity begins.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#Transport"><code>Transport</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:dateTime</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="timeArrival">
+                <h4><code>timeArrival</code></h4>
+                <p><em>Time Arrival</em></p>
+                <div>Arrival event time corresponding to the transactional model's event time. Used to represent when a transport activity is completed.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#Transport"><code>Transport</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:dateTime</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="globalWarmingPotentialTransport">
+                <h4><code>globalWarmingPotentialTransport</code></h4>
+                <p><em>Global Warming Potential Transport</em></p>
+                <div>Environmental impact metric expressing the Global Warming Potential associated with the transport stage. Represented as a transport property with controlled units defined via the repository model.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#Transport"><code>Transport</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:decimal</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="transportBatchId">
+                <h4><code>transportBatchId</code></h4>
+                <p><em>Transport Batch ID</em></p>
+                <div>Reference linking a transport event to the transport batch aggregating it, enabling grouping and traceability across multiple movements.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#Transport"><code>Transport</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="locationDeparture">
+                <h4><code>locationDeparture</code></h4>
+                <p><em>Location Departure</em></p>
+                <div>Departure location of the transport batch, represented as a data element value (e.g., address or coordinates) within the DPP data model.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><a href="#Location"><code>Location</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="locationArrival">
+                <h4><code>locationArrival</code></h4>
+                <p><em>Location Arrival</em></p>
+                <div>Arrival location of the transport batch, supporting traceability of product movements across the supply chain.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><a href="#Location"><code>Location</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="dppId">
+                <h4><code>dppId</code></h4>
+                <p><em>DPP ID</em></p>
+                <div>Reference to the Digital Product Passport associated with this transport batch.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="productId">
+                <h4><code>productId</code></h4>
+                <p><em>Product ID</em></p>
+                <div>Identifier of the product linked to the Digital Product Passport, as defined in the DPP System Standard core metadata.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DPP"><code>DPP</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="name">
+                <h4><code>name</code></h4>
+                <p><em>Name</em></p>
+                <div>Human-readable name of the product or Digital Product Passport.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DPP"><code>DPP</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="granularity">
+                <h4><code>granularity</code></h4>
+                <p><em>Granularity</em></p>
+                <div>Scope of the DPP instance corresponding to product type values such as model, batch, or item.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DPP"><code>DPP</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="facilityId">
+                <h4><code>facilityId</code></h4>
+                <p><em>Facility ID</em></p>
+                <div>Identifier of the production facility associated with the product, modeled as a data element value.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DPP"><code>DPP</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="length">
+                <h4><code>length</code></h4>
+                <p><em>Length</em></p>
+                <div>Product length expressed as a single-valued product property with a controlled unit mapping (e.g., millimeters or meters).</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DPP"><code>DPP</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:decimal</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="weight">
+                <h4><code>weight</code></h4>
+                <p><em>Weight</em></p>
+                <div>Product weight expressed as a single-valued product property with a controlled unit mapping (e.g., kilograms).</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DPP"><code>DPP</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:decimal</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="productGroupId">
+                <h4><code>productGroupId</code></h4>
+                <p><em>Product Group ID</em></p>
+                <div>Reference to the ProductGroup defining the shared technical characteristics of the product or environmental declaration.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DPP"><code>DPP</code></a> ⊔&nbsp;<a href="#EPDProduction"><code>EPDProduction</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="dppSchemaId">
+                <h4><code>dppSchemaId</code></h4>
+                <p><em>DPP Schema ID</em></p>
+                <div>Reference to the schema or profile governing the structure and semantics of this Digital Product Passport.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DPP"><code>DPP</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="dppRegistrationNumber">
+                <h4><code>dppRegistrationNumber</code></h4>
+                <p><em>DPP Registration Number</em></p>
+                <div>Registration identifier assigned when a Digital Product Passport is registered in the EU DPP Registry.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#EUDPPRegistry"><code>EUDPPRegistry</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="version">
+                <h4><code>version</code></h4>
+                <p><em>Version</em></p>
+                <div>Version identifier of the DPP schema.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DppSchema"><code>DppSchema</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="templateName">
+                <h4><code>templateName</code></h4>
+                <p><em>Template Name</em></p>
+                <div>Human-readable name of the schema template or profile.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DppSchema"><code>DppSchema</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="deglerationOfProductConformity">
+                <h4><code>deglerationOfProductConformity</code></h4>
+                <p><em>Declaration of Product Conformity</em></p>
+                <div>Reference or statement representing the Declaration of Product Conformity, modeled as an information product link within the DPP System Standard.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DoPC"><code>DoPC</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:string</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="globalWarmingPotentialProduction">
+                <h4><code>globalWarmingPotentialProduction</code></h4>
+                <p><em>Global Warming Potential Production</em></p>
+                <div>Declared Global Warming Potential for production or transport stages, represented as a quantitative property with controlled units.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#EPDProduction"><code>EPDProduction</code></a> ⊔&nbsp;<a href="#EPDTransport"><code>EPDTransport</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:decimal</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="transportId">
+                <h4><code>transportId</code></h4>
+                <p><em>Transport ID</em></p>
+                <div>Reference to the Transport event associated with this EPD Transport, enabling linkage between environmental declarations and transport activities.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#EPDTransport"><code>EPDTransport</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="economicOperatorId">
+                <h4><code>economicOperatorId</code></h4>
+                <p><em>Economic Operator ID</em></p>
+                <div>Reference to the LegalPerson acting as the economic operator responsible for the product group, aligned with the transactional model's authorized operator (who) dimension.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#ProductGroup"><code>ProductGroup</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="epdId">
+                <h4><code>epdId</code></h4>
+                <p><em>EPD ID</em></p>
+                <div>Reference to the EPD Production associated with this Declaration of Product Conformity, linking conformity statements to environmental data.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#DoPC"><code>DoPC</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+        </section>
+
+        <section id="class_definitions" class="term_definitions">
+            <h2>Class definitions</h2>
+            <p>The following are class definitions in the <code>rddp</code> namespace.</p>
+            <section id="61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1">
+                <h4><code>CredentialSubject</code></h4>
+                <p><em>Credential Subject</em></p>
+                <p>See also the <a href="https://w3.org/TR/vc-data-model-2.0/#credential-subject">formal definition of the term</a>.</p>
+                <p class="note">
+                    <b>This term is formally defined in another vocabulary</b>
+                    (as <a href="https://w3.org/2018/credentials#CredentialSubject">cred:CredentialSubject</a>), but is frequently used with this vocabulary and has been
+                    included to aid readability of this document.
+                </p>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="ProductGroup">
+                <h4><code>ProductGroup</code></h4>
+                <p><em>Product Group</em></p>
+                <div>Groups rail products that share essential technical characteristics (such as rail profile and steel grade) so they can be managed and assessed consistently within a Digital Product Passport. In the DPP System Standard semantic model, such characteristics are represented as product properties within a Product Property Collection, while related certificates and documents are modeled as information products. Steel grade-related acceptance and mechanical conformity are validated through tensile strength and elongation testing procedures defined in EN 13674-1.</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#versionOfStandard"><code>versionOfStandard</code></a>, <a href="#railProfile"><code>railProfile</code></a>, <a href="#steelGrade"><code>steelGrade</code></a>, <a href="#economicOperatorId"><code>economicOperatorId</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="Transport">
+                <h4><code>Transport</code></h4>
+                <p><em>Transport</em></p>
+                <div>Models a transport credential subject capturing responsible service provider, time-bound movement data, and environmental impact metrics. Transport aligns with the transactional model’s business steps (e.g., shipping) and event times, and service providers are represented as stakeholder roles within the DPP ecosystem.</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#serviceProviderId"><code>serviceProviderId</code></a>, <a href="#timeDeparture"><code>timeDeparture</code></a>, <a href="#timeArrival"><code>timeArrival</code></a>, <a href="#globalWarmingPotentialTransport"><code>globalWarmingPotentialTransport</code></a>, <a href="#transportBatchId"><code>transportBatchId</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="TransportBatch">
+                <h4><code>TransportBatch</code></h4>
+                <p><em>Transport Batch</em></p>
+                <div>Represents a shipment batch aggregating one or more transport events for a given DPP. It captures origin and destination to support traceability across movements and aligns with the data model’s identification pattern for data elements.</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#locationDeparture"><code>locationDeparture</code></a>, <a href="#locationArrival"><code>locationArrival</code></a>, <a href="#dppId"><code>dppId</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="DPP">
+                <h4><code>DPP</code></h4>
+                <p><em>Digital Product Passport</em></p>
+                <div>The Digital Product Passport acts as the digital container for product metadata, product properties, and lifecycle-related information. Core metadata includes identifiers, product name, granularity, and facility references, while properties such as length and weight are modeled as data elements with controlled units.</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#productId"><code>productId</code></a>, <a href="#name"><code>name</code></a>, <a href="#granularity"><code>granularity</code></a>, <a href="#facilityId"><code>facilityId</code></a>, <a href="#length"><code>length</code></a>, <a href="#weight"><code>weight</code></a>, <a href="#dppSchemaId"><code>dppSchemaId</code></a></dd>
+                    <dt>In the domain of:</dt>
+                    <dd><a href="#productGroupId"><code>productGroupId</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="EUDPPRegistry">
+                <h4><code>EUDPPRegistry</code></h4>
+                <p><em>EU DPP Registry</em></p>
+                <div>Represents the EU Digital Product Passport Registry, where DPPs are registered to support discovery, conformity assessment, and market surveillance. Registration is an interoperability-relevant moment and a responsibility of economic operators.</div>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#dppRegistrationNumber"><code>dppRegistrationNumber</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="DppSchema">
+                <h4><code>DppSchema</code></h4>
+                <p><em>DPP Schema</em></p>
+                <div>Captures the schema or profile used by DPP instances. In the DPP System Standard model, schemas reference open repositories containing property templates, standards, and controlled units, while data elements carry dictionary references.</div>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#version"><code>version</code></a>, <a href="#templateName"><code>templateName</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="DoPC">
+                <h4><code>DoPC</code></h4>
+                <p><em>Declaration of Product Conformity</em></p>
+                <div>Declaration of Product Conformity modeled as a credential subject. In the DPP semantic model, such declarations are treated as information products with metadata (issuer, issue date) and references to applicable standards.</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#deglerationOfProductConformity"><code>deglerationOfProductConformity</code></a>, <a href="#epdId"><code>epdId</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="EPDProduction">
+                <h4><code>EPDProduction</code></h4>
+                <p><em>EPD Production</em></p>
+                <div>Environmental Product Declaration describing environmental impacts associated with the production stage. Depending on granularity, EPDs may be modeled as information products and/or quantitative product properties.</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>In the domain of:</dt>
+                    <dd><a href="#productGroupId"><code>productGroupId</code></a>, <a href="#globalWarmingPotentialProduction"><code>globalWarmingPotentialProduction</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="EPDTransport">
+                <h4><code>EPDTransport</code></h4>
+                <p><em>EPD Transport</em></p>
+                <div>Environmental Product Declaration describing environmental impacts associated with transport stages, complementing production-stage EPDs and linking to logistics and transport events.</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Domain of:</dt>
+                    <dd><a href="#transportId"><code>transportId</code></a></dd>
+                    <dt>In the domain of:</dt>
+                    <dd><a href="#globalWarmingPotentialProduction"><code>globalWarmingPotentialProduction</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="Location">
+                <h4><code>Location</code></h4>
+                <p><em>Location</em></p>
+                <div>Location</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="http://www.w3.org/ns/locn#Address"><code>locn:Address</code></a> ⊔&nbsp;<a href="http://www.w3.org/ns/locn#Location"><code>locn:Location</code></a> ⊔&nbsp;<a href="http://www.w3.org/ns/locn#Geometry"><code>locn:Geometry</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Range of:</dt>
+                    <dd><a href="#locationDeparture"><code>locationDeparture</code></a>, <a href="#locationArrival"><code>locationArrival</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1"><code>https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+        </section>
+
+
+    </section>
+
+
+</body>
+
+</html>

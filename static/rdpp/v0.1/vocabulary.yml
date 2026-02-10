@@ -1,0 +1,346 @@
+vocab:
+  - id: rddp
+    value: https://github.com/railway-dpp/vocabulary#
+    context: https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1
+
+prefix:
+  - id: ebw
+    value: https://ebw-vocabulary.spherity.dev/ebw#
+
+  - id: locn
+    value: http://www.w3.org/ns/locn#
+
+  - id: cred
+    value: https://w3.org/2018/credentials#
+
+  - id: schema
+    value: https://schema.org/
+
+ontology:
+  - property: dc:title
+    value: Railway Digital Product Passport Vocabulary
+  - property: dc:description
+    value: >
+      Vocabulary for Digital Product Passports (DPP) in the railway steel domain,
+      aligned with the DPP System Standard semantic and functional data model and
+      EN 13674-1 for rail steel acceptance.
+
+class:
+  - id: cred:CredentialSubject
+    label: Credential Subject
+    defined_by: https://w3.org/TR/vc-data-model-2.0/#credential-subject
+
+  - id: ProductGroup
+    label: Product Group
+    comment: >
+      Groups rail products that share essential technical characteristics
+      (such as rail profile and steel grade) so they can be managed and assessed
+      consistently within a Digital Product Passport. In the DPP System Standard
+      semantic model, such characteristics are represented as product properties
+      within a Product Property Collection, while related certificates and
+      documents are modeled as information products. Steel grade-related
+      acceptance and mechanical conformity are validated through tensile
+      strength and elongation testing procedures defined in EN 13674-1.
+    upper_value: cred:CredentialSubject
+
+  - id: Transport
+    label: Transport
+    comment: >
+      Models a transport credential subject capturing responsible service
+      provider, time-bound movement data, and environmental impact metrics.
+      Transport aligns with the transactional model’s business steps (e.g.,
+      shipping) and event times, and service providers are represented as
+      stakeholder roles within the DPP ecosystem.
+    upper_value: cred:CredentialSubject
+
+  - id: TransportBatch
+    label: Transport Batch
+    comment: >
+      Represents a shipment batch aggregating one or more transport events for
+      a given DPP. It captures origin and destination to support traceability
+      across movements and aligns with the data model’s identification pattern
+      for data elements.
+    upper_value: cred:CredentialSubject
+
+  - id: DPP
+    label: Digital Product Passport
+    comment: >
+      The Digital Product Passport acts as the digital container for product
+      metadata, product properties, and lifecycle-related information.
+      Core metadata includes identifiers, product name, granularity, and
+      facility references, while properties such as length and weight are
+      modeled as data elements with controlled units.
+    upper_value: cred:CredentialSubject
+
+  - id: EUDPPRegistry
+    label: EU DPP Registry
+    comment: >
+      Represents the EU Digital Product Passport Registry, where DPPs are
+      registered to support discovery, conformity assessment, and market
+      surveillance. Registration is an interoperability-relevant moment and a
+      responsibility of economic operators.
+
+  - id: DppSchema
+    label: DPP Schema
+    comment: >
+      Captures the schema or profile used by DPP instances. In the DPP System
+      Standard model, schemas reference open repositories containing property
+      templates, standards, and controlled units, while data elements carry
+      dictionary references.
+
+  - id: DoPC
+    label: Declaration of Product Conformity
+    comment: >
+      Declaration of Product Conformity modeled as a credential subject. In the
+      DPP semantic model, such declarations are treated as information products
+      with metadata (issuer, issue date) and references to applicable standards.
+    upper_value: cred:CredentialSubject
+
+  - id: EPDProduction
+    label: EPD Production
+    comment: >
+      Environmental Product Declaration describing environmental impacts
+      associated with the production stage. Depending on granularity, EPDs may
+      be modeled as information products and/or quantitative product properties.
+    upper_value: cred:CredentialSubject
+
+  - id: EPDTransport
+    label: EPD Transport
+    comment: >
+      Environmental Product Declaration describing environmental impacts
+      associated with transport stages, complementing production-stage EPDs
+      and linking to logistics and transport events.
+    upper_value: cred:CredentialSubject
+
+  - id: Location
+    label: Location
+    comment: >
+      Location
+    upper_value:
+      - locn:Address
+      - locn:Location
+      - locn:Geometry
+    upper_union: true
+
+property:
+  - id: versionOfStandard
+    label: Version of Standard
+    comment: >
+      List of standards and versions applied to define product properties and
+      documentation. This aligns with the repository and dictionary model of
+      the DPP System Standard, where property templates are defined within
+      standards and units are controlled through shared vocabularies.
+    domain: ProductGroup
+    range: xsd:string
+    container: set
+
+  - id: railProfile
+    label: Rail Profile
+    comment: >
+      Domain-specific product property identifying the rail profile. It is
+      modeled as a single-valued product property within the Product Property
+      Collection of the DPP System Standard.
+    domain: ProductGroup
+    range: xsd:string
+
+  - id: steelGrade
+    label: Steel Grade
+    comment: >
+      Domain-specific product property indicating the steel grade. Mechanical
+      conformity is validated through tensile strength and elongation testing
+      procedures defined in EN 13674-1, clause 8.7, including predictive
+      equations, periodic testing, and corrective actions.
+    domain: ProductGroup
+    range: xsd:string
+
+  - id: serviceProviderId
+    label: Service Provider ID
+    comment: >
+      Identifier of the service provider responsible for the transport. The
+      service provider is modeled as a stakeholder role within the DPP System
+      Standard.
+    domain: Transport
+    range: xsd:anyURI
+
+  - id: timeDeparture
+    label: Time Departure
+    comment: >
+      Departure event time corresponding to the transactional model's event
+      time. Used to represent when a transport activity begins.
+    domain: Transport
+    range: xsd:dateTime
+
+  - id: timeArrival
+    label: Time Arrival
+    comment: >
+      Arrival event time corresponding to the transactional model's event time.
+      Used to represent when a transport activity is completed.
+    domain: Transport
+    range: xsd:dateTime
+
+  - id: globalWarmingPotentialTransport
+    label: Global Warming Potential Transport
+    comment: >
+      Environmental impact metric expressing the Global Warming Potential
+      associated with the transport stage. Represented as a transport property
+      with controlled units defined via the repository model.
+    domain: Transport
+    range: xsd:decimal
+
+  - id: transportBatchId
+    label: Transport Batch ID
+    comment: >
+      Reference linking a transport event to the transport batch aggregating it,
+      enabling grouping and traceability across multiple movements.
+    domain: Transport
+    range: xsd:anyURI
+
+  - id: locationDeparture
+    label: Location Departure
+    comment: >
+      Departure location of the transport batch, represented as a data element
+      value (e.g., address or coordinates) within the DPP data model.
+    domain: TransportBatch
+    range: Location
+
+  - id: locationArrival
+    label: Location Arrival
+    comment: >
+      Arrival location of the transport batch, supporting traceability of
+      product movements across the supply chain.
+    domain: TransportBatch
+    range: Location
+
+  - id: dppId
+    label: DPP ID
+    comment: >
+      Reference to the Digital Product Passport associated with this transport
+      batch.
+    domain: TransportBatch
+    range: xsd:anyURI
+
+  - id: productId
+    label: Product ID
+    comment: >
+      Identifier of the product linked to the Digital Product Passport, as
+      defined in the DPP System Standard core metadata.
+    domain: DPP
+    range: xsd:anyURI
+
+  - id: name
+    label: Name
+    comment: >
+      Human-readable name of the product or Digital Product Passport.
+    domain: DPP
+    range: xsd:string
+
+  - id: granularity
+    label: Granularity
+    comment: >
+      Scope of the DPP instance corresponding to product type values such as
+      model, batch, or item.
+    domain: DPP
+    range: xsd:string
+
+  - id: facilityId
+    label: Facility ID
+    comment: >
+      Identifier of the production facility associated with the product, modeled
+      as a data element value.
+    domain: DPP
+    range: xsd:anyURI
+
+  - id: length
+    label: Length
+    comment: >
+      Product length expressed as a single-valued product property with a
+      controlled unit mapping (e.g., millimeters or meters).
+    domain: DPP
+    range: xsd:decimal
+
+  - id: weight
+    label: Weight
+    comment: >
+      Product weight expressed as a single-valued product property with a
+      controlled unit mapping (e.g., kilograms).
+    domain: DPP
+    range: xsd:decimal
+
+  - id: productGroupId
+    label: Product Group ID
+    comment: >
+      Reference to the ProductGroup defining the shared technical
+      characteristics of the product or environmental declaration.
+    domain: [DPP, EPDProduction]
+    range: xsd:anyURI
+
+  - id: dppSchemaId
+    label: DPP Schema ID
+    comment: >
+      Reference to the schema or profile governing the structure and semantics
+      of this Digital Product Passport.
+    domain: DPP
+    range: xsd:anyURI
+
+  - id: dppRegistrationNumber
+    label: DPP Registration Number
+    comment: >
+      Registration identifier assigned when a Digital Product Passport is
+      registered in the EU DPP Registry.
+    domain: EUDPPRegistry
+    range: xsd:string
+
+  - id: version
+    label: Version
+    comment: >
+      Version identifier of the DPP schema.
+    domain: DppSchema
+    range: xsd:string
+
+  - id: templateName
+    label: Template Name
+    comment: >
+      Human-readable name of the schema template or profile.
+    domain: DppSchema
+    range: xsd:string
+
+  - id: deglerationOfProductConformity
+    label: Declaration of Product Conformity
+    comment: >
+      Reference or statement representing the Declaration of Product Conformity,
+      modeled as an information product link within the DPP System Standard.
+    domain: DoPC
+    range: xsd:string
+
+  - id: globalWarmingPotentialProduction
+    label: Global Warming Potential Production
+    comment: >
+      Declared Global Warming Potential for production or transport stages,
+      represented as a quantitative property with controlled units.
+    domain: [EPDProduction, EPDTransport]
+    range: xsd:decimal
+
+  - id: transportId
+    label: Transport ID
+    comment: >
+      Reference to the Transport event associated with this EPD Transport,
+      enabling linkage between environmental declarations and transport activities.
+    domain: EPDTransport
+    range: xsd:anyURI
+
+  - id: economicOperatorId
+    label: Economic Operator ID
+    comment: >
+      Reference to the LegalPerson acting as the economic operator responsible
+      for the product group, aligned with the transactional model's authorized
+      operator (who) dimension.
+    domain: ProductGroup
+    range: xsd:anyURI
+
+  - id: epdId
+    label: EPD ID
+    comment: >
+      Reference to the EPD Production associated with this Declaration of
+      Product Conformity, linking conformity statements to environmental data.
+    domain: DoPC
+    range: xsd:anyURI

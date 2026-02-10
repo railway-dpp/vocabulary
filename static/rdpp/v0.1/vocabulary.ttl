@@ -1,0 +1,386 @@
+@prefix rddp: <https://github.com/railway-dpp/vocabulary#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix cred: <https://w3.org/2018/credentials#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+
+# Ontology definition
+rddp: a owl:Ontology ;
+    dc:title """Railway Digital Product Passport Vocabulary"""@en ;
+    dc:description """Vocabulary for Digital Product Passports (DPP) in the railway steel domain, aligned with the DPP System Standard semantic and functional data model and EN 13674-1 for rail steel acceptance.
+"""^^rdf:HTML ;
+    dc:date "2026-02-10"^^xsd:date ;
+.
+
+# Property definitions
+rddp:versionOfStandard a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:ProductGroup ;
+    rdfs:range xsd:string ;
+    rdfs:label "Version of Standard" ;
+    rdfs:comment """<div>List of standards and versions applied to define product properties and documentation. This aligns with the repository and dictionary model of the DPP System Standard, where property templates are defined within standards and units are controlled through shared vocabularies.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:railProfile a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:ProductGroup ;
+    rdfs:range xsd:string ;
+    rdfs:label "Rail Profile" ;
+    rdfs:comment """<div>Domain-specific product property identifying the rail profile. It is modeled as a single-valued product property within the Product Property Collection of the DPP System Standard.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:steelGrade a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:ProductGroup ;
+    rdfs:range xsd:string ;
+    rdfs:label "Steel Grade" ;
+    rdfs:comment """<div>Domain-specific product property indicating the steel grade. Mechanical conformity is validated through tensile strength and elongation testing procedures defined in EN 13674-1, clause 8.7, including predictive equations, periodic testing, and corrective actions.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:serviceProviderId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:Transport ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "Service Provider ID" ;
+    rdfs:comment """<div>Identifier of the service provider responsible for the transport. The service provider is modeled as a stakeholder role within the DPP System Standard.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:timeDeparture a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:Transport ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "Time Departure" ;
+    rdfs:comment """<div>Departure event time corresponding to the transactional model's event time. Used to represent when a transport activity begins.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:timeArrival a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:Transport ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "Time Arrival" ;
+    rdfs:comment """<div>Arrival event time corresponding to the transactional model's event time. Used to represent when a transport activity is completed.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:globalWarmingPotentialTransport a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:Transport ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "Global Warming Potential Transport" ;
+    rdfs:comment """<div>Environmental impact metric expressing the Global Warming Potential associated with the transport stage. Represented as a transport property with controlled units defined via the repository model.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:transportBatchId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:Transport ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "Transport Batch ID" ;
+    rdfs:comment """<div>Reference linking a transport event to the transport batch aggregating it, enabling grouping and traceability across multiple movements.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:locationDeparture a rdf:Property, owl:ObjectProperty ;
+    rdfs:domain rddp:TransportBatch ;
+    rdfs:range rddp:Location ;
+    rdfs:label "Location Departure" ;
+    rdfs:comment """<div>Departure location of the transport batch, represented as a data element value (e.g., address or coordinates) within the DPP data model.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:locationArrival a rdf:Property, owl:ObjectProperty ;
+    rdfs:domain rddp:TransportBatch ;
+    rdfs:range rddp:Location ;
+    rdfs:label "Location Arrival" ;
+    rdfs:comment """<div>Arrival location of the transport batch, supporting traceability of product movements across the supply chain.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:dppId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:TransportBatch ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "DPP ID" ;
+    rdfs:comment """<div>Reference to the Digital Product Passport associated with this transport batch.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:productId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DPP ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "Product ID" ;
+    rdfs:comment """<div>Identifier of the product linked to the Digital Product Passport, as defined in the DPP System Standard core metadata.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:name a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DPP ;
+    rdfs:range xsd:string ;
+    rdfs:label "Name" ;
+    rdfs:comment """<div>Human-readable name of the product or Digital Product Passport.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:granularity a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DPP ;
+    rdfs:range xsd:string ;
+    rdfs:label "Granularity" ;
+    rdfs:comment """<div>Scope of the DPP instance corresponding to product type values such as model, batch, or item.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:facilityId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DPP ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "Facility ID" ;
+    rdfs:comment """<div>Identifier of the production facility associated with the product, modeled as a data element value.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:length a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DPP ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "Length" ;
+    rdfs:comment """<div>Product length expressed as a single-valued product property with a controlled unit mapping (e.g., millimeters or meters).</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:weight a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DPP ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "Weight" ;
+    rdfs:comment """<div>Product weight expressed as a single-valued product property with a controlled unit mapping (e.g., kilograms).</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:productGroupId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain [ a owl:Class; owl:unionOf (rddp:DPP rddp:EPDProduction) ] ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "Product Group ID" ;
+    rdfs:comment """<div>Reference to the ProductGroup defining the shared technical characteristics of the product or environmental declaration.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:dppSchemaId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DPP ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "DPP Schema ID" ;
+    rdfs:comment """<div>Reference to the schema or profile governing the structure and semantics of this Digital Product Passport.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:dppRegistrationNumber a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:EUDPPRegistry ;
+    rdfs:range xsd:string ;
+    rdfs:label "DPP Registration Number" ;
+    rdfs:comment """<div>Registration identifier assigned when a Digital Product Passport is registered in the EU DPP Registry.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:version a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DppSchema ;
+    rdfs:range xsd:string ;
+    rdfs:label "Version" ;
+    rdfs:comment """<div>Version identifier of the DPP schema.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:templateName a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DppSchema ;
+    rdfs:range xsd:string ;
+    rdfs:label "Template Name" ;
+    rdfs:comment """<div>Human-readable name of the schema template or profile.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:deglerationOfProductConformity a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DoPC ;
+    rdfs:range xsd:string ;
+    rdfs:label "Declaration of Product Conformity" ;
+    rdfs:comment """<div>Reference or statement representing the Declaration of Product Conformity, modeled as an information product link within the DPP System Standard.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:globalWarmingPotentialProduction a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain [ a owl:Class; owl:unionOf (rddp:EPDProduction rddp:EPDTransport) ] ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "Global Warming Potential Production" ;
+    rdfs:comment """<div>Declared Global Warming Potential for production or transport stages, represented as a quantitative property with controlled units.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:transportId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:EPDTransport ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "Transport ID" ;
+    rdfs:comment """<div>Reference to the Transport event associated with this EPD Transport, enabling linkage between environmental declarations and transport activities.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:economicOperatorId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:ProductGroup ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "Economic Operator ID" ;
+    rdfs:comment """<div>Reference to the LegalPerson acting as the economic operator responsible for the product group, aligned with the transactional model's authorized operator (who) dimension.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:epdId a rdf:Property, owl:DatatypeProperty ;
+    rdfs:domain rddp:DoPC ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "EPD ID" ;
+    rdfs:comment """<div>Reference to the EPD Production associated with this Declaration of Product Conformity, linking conformity statements to environmental data.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+# Class definitions
+rddp:ProductGroup a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialSubject ;
+    rdfs:label "Product Group" ;
+    rdfs:comment """<div>Groups rail products that share essential technical characteristics (such as rail profile and steel grade) so they can be managed and assessed consistently within a Digital Product Passport. In the DPP System Standard semantic model, such characteristics are represented as product properties within a Product Property Collection, while related certificates and documents are modeled as information products. Steel grade-related acceptance and mechanical conformity are validated through tensile strength and elongation testing procedures defined in EN 13674-1.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:Transport a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialSubject ;
+    rdfs:label "Transport" ;
+    rdfs:comment """<div>Models a transport credential subject capturing responsible service provider, time-bound movement data, and environmental impact metrics. Transport aligns with the transactional model’s business steps (e.g., shipping) and event times, and service providers are represented as stakeholder roles within the DPP ecosystem.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:TransportBatch a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialSubject ;
+    rdfs:label "Transport Batch" ;
+    rdfs:comment """<div>Represents a shipment batch aggregating one or more transport events for a given DPP. It captures origin and destination to support traceability across movements and aligns with the data model’s identification pattern for data elements.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:DPP a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialSubject ;
+    rdfs:label "Digital Product Passport" ;
+    rdfs:comment """<div>The Digital Product Passport acts as the digital container for product metadata, product properties, and lifecycle-related information. Core metadata includes identifiers, product name, granularity, and facility references, while properties such as length and weight are modeled as data elements with controlled units.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:EUDPPRegistry a rdfs:Class ;
+    rdfs:label "EU DPP Registry" ;
+    rdfs:comment """<div>Represents the EU Digital Product Passport Registry, where DPPs are registered to support discovery, conformity assessment, and market surveillance. Registration is an interoperability-relevant moment and a responsibility of economic operators.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:DppSchema a rdfs:Class ;
+    rdfs:label "DPP Schema" ;
+    rdfs:comment """<div>Captures the schema or profile used by DPP instances. In the DPP System Standard model, schemas reference open repositories containing property templates, standards, and controlled units, while data elements carry dictionary references.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:DoPC a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialSubject ;
+    rdfs:label "Declaration of Product Conformity" ;
+    rdfs:comment """<div>Declaration of Product Conformity modeled as a credential subject. In the DPP semantic model, such declarations are treated as information products with metadata (issuer, issue date) and references to applicable standards.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:EPDProduction a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialSubject ;
+    rdfs:label "EPD Production" ;
+    rdfs:comment """<div>Environmental Product Declaration describing environmental impacts associated with the production stage. Depending on granularity, EPDs may be modeled as information products and/or quantitative product properties.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:EPDTransport a rdfs:Class ;
+    rdfs:subClassOf cred:CredentialSubject ;
+    rdfs:label "EPD Transport" ;
+    rdfs:comment """<div>Environmental Product Declaration describing environmental impacts associated with transport stages, complementing production-stage EPDs and linking to logistics and transport events.</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+rddp:Location a rdfs:Class ;
+    rdfs:subClassOf [ a owl:Class; owl:unionOf (locn:Address locn:Location locn:Geometry) ] ;
+    rdfs:label "Location" ;
+    rdfs:comment """<div>Location</div>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <https://github.com/railway-dpp/vocabulary#> ;
+    vs:term_status "stable" ;
+.
+
+
+
+# Context files and their mentions
+<https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1> a jsonld:Context ;
+    schema:mentions
+        cred:CredentialSubject,
+        rddp:DPP,
+        rddp:DoPC,
+        rddp:DppSchema,
+        rddp:EPDProduction,
+        rddp:EPDTransport,
+        rddp:EUDPPRegistry,
+        rddp:Location,
+        rddp:ProductGroup,
+        rddp:Transport,
+        rddp:TransportBatch,
+        rddp:deglerationOfProductConformity,
+        rddp:dppId,
+        rddp:dppRegistrationNumber,
+        rddp:dppSchemaId,
+        rddp:economicOperatorId,
+        rddp:epdId,
+        rddp:facilityId,
+        rddp:globalWarmingPotentialProduction,
+        rddp:globalWarmingPotentialTransport,
+        rddp:granularity,
+        rddp:length,
+        rddp:locationArrival,
+        rddp:locationDeparture,
+        rddp:name,
+        rddp:productGroupId,
+        rddp:productId,
+        rddp:railProfile,
+        rddp:serviceProviderId,
+        rddp:steelGrade,
+        rddp:templateName,
+        rddp:timeArrival,
+        rddp:timeDeparture,
+        rddp:transportBatchId,
+        rddp:transportId,
+        rddp:version,
+        rddp:versionOfStandard,
+        rddp:weight ;
+.
+
