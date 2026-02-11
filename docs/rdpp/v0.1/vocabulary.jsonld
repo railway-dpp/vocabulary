@@ -76,7 +76,7 @@
         "@value": "Vocabulary for Digital Product Passports (DPP) in the railway steel domain, aligned with the DPP System Standard semantic and functional data model and EN 13674-1 for rail steel acceptance.\n",
         "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
     },
-    "dc:date": "2026-02-10",
+    "dc:date": "2026-02-11",
     "rdfs_properties": [{
         "@id": "rddp:versionOfStandard",
         "@type": ["rdf:Property", "owl:DatatypeProperty"],
@@ -89,7 +89,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -104,7 +104,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -119,7 +119,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -134,7 +134,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -149,7 +149,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -164,7 +164,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -179,7 +179,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -194,7 +194,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -209,7 +209,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -224,7 +224,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -239,7 +239,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -254,7 +254,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -269,7 +269,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -284,7 +284,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -299,7 +299,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -314,7 +314,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -329,7 +329,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -347,7 +347,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -362,7 +362,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -377,7 +377,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -392,7 +392,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -407,7 +407,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -422,7 +422,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -440,7 +440,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -455,7 +455,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -470,7 +470,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -485,7 +485,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }],
@@ -500,7 +500,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -514,7 +514,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -528,7 +528,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -542,7 +542,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -555,7 +555,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -568,7 +568,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -582,7 +582,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -596,7 +596,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -610,7 +610,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }, {
@@ -627,7 +627,7 @@
         },
         "vs:term_status": "stable",
         "mentioned": [{
-            "@id": "https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1",
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
             "@type": "jsonld:Context"
         }]
     }]

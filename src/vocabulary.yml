@@ -1,7 +1,7 @@
 vocab:
   - id: rddp
     value: https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#
-    context: https://railway-dpp-vocabulary.spherity.dev/railway-dpp-context/v0.1
+    context: https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1
 
 prefix:
   - id: ebw
@@ -29,6 +29,7 @@ class:
   - id: cred:CredentialSubject
     label: Credential Subject
     defined_by: https://w3.org/TR/vc-data-model-2.0/#credential-subject
+    context: none
 
   - id: ProductGroup
     label: Product Group
