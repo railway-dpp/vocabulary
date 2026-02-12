@@ -50,14 +50,14 @@ classDiagram
         globalWarmingPotential
     }
 
-    class MeansOfTransport {
+    class ModeOfTransport {
         <<credentialSubject>>
-        nameOfMeansOfTransport        
+       typOfVehicel       
 
     }
 
-    EPD "1" --> "0..n" MeansOfTransport: epdSubjectId
-    Transport "0..n" --> "1" MeansOfTransport: transportTypeId
+    EPD "1" --> "0..n" ModeOfTransport: epdSubjectId
+    Transport "0..n" --> "1" ModeOfTransport: modeOfTransportId
     Transport "0..n" --> "1" TransportBatch: transportBatchId
     DPP "1..n" <-- "0..n" TransportBatch: dppId
     DPP "0..n" <-- "0..1" EU-DPP-Registry: dppId
