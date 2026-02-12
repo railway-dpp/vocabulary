@@ -346,6 +346,13 @@ property:
   - id: epdSubjectId
     label: EPD Subject Id
     comment: >
-      Reference to the subject of the EPD, e.g. a ProductGroup or a TransportType.
+      Reference to the subject of the EPD, e.g. a ProductGroup or a ModeOfTransport.
     domain: EPD
+    range: xsd:anyURI
+
+  - id: typeOfVehicel
+    label: typeOfVehicel
+    comment: >
+      Reference to Transport and receives epdSubject for each typeOfVehicle.
+    domain: modeOfTransport
     range: xsd:anyURI
