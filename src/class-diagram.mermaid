@@ -37,33 +37,30 @@ classDiagram
 
     class DppSchema {
         <<dictonary>>
-        id
         version
         templateName
     }
     class DoPC {
         <<credentialSubject>>
-        id
         deglerationOfProductConformity
     }
 
-    class EPD-Production {
+    class EPD {
         <<credentialSubject>>
-        id
-        globalWarmingPotentialProduction
+        globalWarmingPotential
     }
 
-    class EPD-Transport {
+    class TransportType {
         <<credentialSubject>>
-        id
-        globalWarmingPotentialProduction
+
     }
 
-    EPD-Transport "1" --> "0--n" Transport: transportId
+    EPD "1" --> "0..n" TransportType: epdSubjectId
+    Transport "0..n" --> "1" TransportType: transportPortId
     Transport "0..n" --> "1" TransportBatch: transportBatchId
     DPP "1..n" <-- "0..n" TransportBatch: dppId
     DPP "0..n" <-- "0..1" EU-DPP-Registry: dppId
     DPP "0..n" --> "1" ProductGroup: productGroupId
-    ProductGroup "1..n" <-- "0..1" EPD-Production: productGroupId
-    EPD-Production "1..n" <-- "0..1" DoPC: epdId
+    ProductGroup "1..n" <-- "1" EPD: epdSubjectId
+    EPD "1..n" <-- "0..1" DoPC: epdId
     DppSchema "1" --> "0..n" DPP: dppSchemaID

@@ -54,6 +54,12 @@ class:
       stakeholder roles within the DPP ecosystem.
     upper_value: cred:CredentialSubject
 
+  - id: TransportType
+    label: Transport Type
+    comment: >
+      Groups transports in categories and defines their characteristics.
+    upper_value: cred:CredentialSubject
+
   - id: TransportBatch
     label: Transport Batch
     comment: >
@@ -97,20 +103,12 @@ class:
       with metadata (issuer, issue date) and references to applicable standards.
     upper_value: cred:CredentialSubject
 
-  - id: EPDProduction
-    label: EPD Production
+  - id: EPD
+    label: EPD
     comment: >
       Environmental Product Declaration describing environmental impacts
-      associated with the production stage. Depending on granularity, EPDs may
-      be modeled as information products and/or quantitative product properties.
-    upper_value: cred:CredentialSubject
-
-  - id: EPDTransport
-    label: EPD Transport
-    comment: >
-      Environmental Product Declaration describing environmental impacts
-      associated with transport stages, complementing production-stage EPDs
-      and linking to logistics and transport events.
+      associated with the life cycle stages (production, transport, use, dismantling, ...). Depending on granularity, EPDs may
+      be modeled as information and/or quantitative properties.
     upper_value: cred:CredentialSubject
 
   - id: Location
@@ -179,13 +177,13 @@ property:
     domain: Transport
     range: xsd:dateTime
 
-  - id: globalWarmingPotentialTransport
-    label: Global Warming Potential Transport
+  - id: globalWarmingPotential
+    label: Global Warming Potential
     comment: >
       Environmental impact metric expressing the Global Warming Potential
-      associated with the transport stage. Represented as a transport property
+      associated with a particular life cycle stage. Represented as a property
       with controlled units defined via the repository model.
-    domain: Transport
+    domain: EPD
     range: xsd:decimal
 
   - id: transportBatchId
@@ -201,7 +199,9 @@ property:
     comment: >
       Departure location of the transport batch, represented as a data element
       value (e.g., address or coordinates) within the DPP data model.
-    domain: TransportBatch
+    domain:
+      - TransportBatch
+      - Transport
     range: Location
 
   - id: locationArrival
@@ -209,15 +209,18 @@ property:
     comment: >
       Arrival location of the transport batch, supporting traceability of
       product movements across the supply chain.
-    domain: TransportBatch
+    domain:
+      - TransportBatch
+      - Transport
     range: Location
 
   - id: dppId
     label: DPP ID
     comment: >
-      Reference to the Digital Product Passport associated with this transport
-      batch.
-    domain: TransportBatch
+      Reference to the Digital Product Passport.
+    domain:
+      - TransportBatch
+      - EU-DPP-Registry
     range: xsd:anyURI
 
   - id: productId
@@ -271,8 +274,8 @@ property:
     label: Product Group ID
     comment: >
       Reference to the ProductGroup defining the shared technical
-      characteristics of the product or environmental declaration.
-    domain: [DPP, EPDProduction]
+      characteristics of the product.
+    domain: DPP
     range: xsd:anyURI
 
   - id: dppSchemaId
@@ -313,20 +316,20 @@ property:
     domain: DoPC
     range: xsd:string
 
-  - id: globalWarmingPotentialProduction
-    label: Global Warming Potential Production
-    comment: >
-      Declared Global Warming Potential for production or transport stages,
-      represented as a quantitative property with controlled units.
-    domain: [EPDProduction, EPDTransport]
-    range: xsd:decimal
-
   - id: transportId
     label: Transport ID
     comment: >
       Reference to the Transport event associated with this EPD Transport,
       enabling linkage between environmental declarations and transport activities.
     domain: EPDTransport
+    range: xsd:anyURI
+
+  - id: transportTypeId
+    label: Transport Type ID
+    comment: >
+      Reference to the TransportType defining the shared technical
+      characteristics of a specific TransportType.
+    domain: Transport
     range: xsd:anyURI
 
   - id: economicOperatorId
@@ -341,7 +344,14 @@ property:
   - id: epdId
     label: EPD ID
     comment: >
-      Reference to the EPD Production associated with this Declaration of
+      Reference to the EPD associated with this Declaration of
       Product Conformity, linking conformity statements to environmental data.
     domain: DoPC
+    range: xsd:anyURI
+
+  - id: epdSubjectId
+    label: EPD Subject Id
+    comment: >
+      Reference to the subject of the EPD, e.g. a ProductGroup or a TransportType.
+    domain: EPD
     range: xsd:anyURI

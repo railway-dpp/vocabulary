@@ -125,7 +125,7 @@
         <dl>
             <dt>Published:</dt>
             <dd>
-                <time property="dc:date" id="time">2026-02-11</time>
+                <time property="dc:date" id="time">2026-02-12</time>
             </dd>
             <dt>Version Info:</dt>
             <dd>0.1</dd>
@@ -189,22 +189,22 @@
                         <li><a href="#DPP"><code>DPP<code></code></code></a></li>
                         <li><a href="#DoPC"><code>DoPC<code></code></code></a></li>
                         <li><a href="#DppSchema"><code>DppSchema<code></code></code></a></li>
-                        <li><a href="#EPDProduction"><code>EPDProduction<code></code></code></a></li>
-                        <li><a href="#EPDTransport"><code>EPDTransport<code></code></code></a></li>
+                        <li><a href="#EPD"><code>EPD<code></code></code></a></li>
                         <li><a href="#EUDPPRegistry"><code>EUDPPRegistry<code></code></code></a></li>
                         <li><a href="#Location"><code>Location<code></code></code></a></li>
                         <li><a href="#ProductGroup"><code>ProductGroup<code></code></code></a></li>
                         <li><a href="#Transport"><code>Transport<code></code></code></a></li>
                         <li><a href="#TransportBatch"><code>TransportBatch<code></code></code></a></li>
+                        <li><a href="#TransportType"><code>TransportType<code></code></code></a></li>
                         <li><a href="#deglerationOfProductConformity"><code>deglerationOfProductConformity<code></code></code></a></li>
                         <li><a href="#dppId"><code>dppId<code></code></code></a></li>
                         <li><a href="#dppRegistrationNumber"><code>dppRegistrationNumber<code></code></code></a></li>
                         <li><a href="#dppSchemaId"><code>dppSchemaId<code></code></code></a></li>
                         <li><a href="#economicOperatorId"><code>economicOperatorId<code></code></code></a></li>
                         <li><a href="#epdId"><code>epdId<code></code></code></a></li>
+                        <li><a href="#epdSubjectId"><code>epdSubjectId<code></code></code></a></li>
                         <li><a href="#facilityId"><code>facilityId<code></code></code></a></li>
-                        <li><a href="#globalWarmingPotentialProduction"><code>globalWarmingPotentialProduction<code></code></code></a></li>
-                        <li><a href="#globalWarmingPotentialTransport"><code>globalWarmingPotentialTransport<code></code></code></a></li>
+                        <li><a href="#globalWarmingPotential"><code>globalWarmingPotential<code></code></code></a></li>
                         <li><a href="#granularity"><code>granularity<code></code></code></a></li>
                         <li><a href="#length"><code>length<code></code></code></a></li>
                         <li><a href="#locationArrival"><code>locationArrival<code></code></code></a></li>
@@ -220,6 +220,7 @@
                         <li><a href="#timeDeparture"><code>timeDeparture<code></code></code></a></li>
                         <li><a href="#transportBatchId"><code>transportBatchId<code></code></code></a></li>
                         <li><a href="#transportId"><code>transportId<code></code></code></a></li>
+                        <li><a href="#transportTypeId"><code>transportTypeId<code></code></code></a></li>
                         <li><a href="#version"><code>version<code></code></code></a></li>
                         <li><a href="#versionOfStandard"><code>versionOfStandard<code></code></code></a></li>
                         <li><a href="#weight"><code>weight<code></code></code></a></li>
@@ -327,13 +328,13 @@
                     <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
                 </dl>
             </section>
-            <section id="globalWarmingPotentialTransport">
-                <h4><code>globalWarmingPotentialTransport</code></h4>
-                <p><em>Global Warming Potential Transport</em></p>
-                <div>Environmental impact metric expressing the Global Warming Potential associated with the transport stage. Represented as a transport property with controlled units defined via the repository model.</div>
+            <section id="globalWarmingPotential">
+                <h4><code>globalWarmingPotential</code></h4>
+                <p><em>Global Warming Potential</em></p>
+                <div>Environmental impact metric expressing the Global Warming Potential associated with a particular life cycle stage. Represented as a property with controlled units defined via the repository model.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
-                    <dd><a href="#Transport"><code>Transport</code></a></dd>
+                    <dd><a href="#EPD"><code>EPD</code></a></dd>
                     <dt>Range:</dt>
                     <dd><code>xsd:decimal</code></dd>
                 </dl>
@@ -363,7 +364,7 @@
                 <div>Departure location of the transport batch, represented as a data element value (e.g., address or coordinates) within the DPP data model.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
-                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a></dd>
+                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a> ⊔&nbsp;<a href="#Transport"><code>Transport</code></a></dd>
                     <dt>Range:</dt>
                     <dd><a href="#Location"><code>Location</code></a></dd>
                 </dl>
@@ -378,7 +379,7 @@
                 <div>Arrival location of the transport batch, supporting traceability of product movements across the supply chain.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
-                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a></dd>
+                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a> ⊔&nbsp;<a href="#Transport"><code>Transport</code></a></dd>
                     <dt>Range:</dt>
                     <dd><a href="#Location"><code>Location</code></a></dd>
                 </dl>
@@ -390,10 +391,10 @@
             <section id="dppId">
                 <h4><code>dppId</code></h4>
                 <p><em>DPP ID</em></p>
-                <div>Reference to the Digital Product Passport associated with this transport batch.</div>
+                <div>Reference to the Digital Product Passport.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
-                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a></dd>
+                    <dd><a href="#TransportBatch"><code>TransportBatch</code></a> ⊔&nbsp;<a href="#EU-DPP-Registry"><code>EU-DPP-Registry</code></a></dd>
                     <dt>Range:</dt>
                     <dd><code>xsd:anyURI</code></dd>
                 </dl>
@@ -495,10 +496,10 @@
             <section id="productGroupId">
                 <h4><code>productGroupId</code></h4>
                 <p><em>Product Group ID</em></p>
-                <div>Reference to the ProductGroup defining the shared technical characteristics of the product or environmental declaration.</div>
+                <div>Reference to the ProductGroup defining the shared technical characteristics of the product.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
-                    <dd><a href="#DPP"><code>DPP</code></a> ⊔&nbsp;<a href="#EPDProduction"><code>EPDProduction</code></a></dd>
+                    <dd><a href="#DPP"><code>DPP</code></a></dd>
                     <dt>Range:</dt>
                     <dd><code>xsd:anyURI</code></dd>
                 </dl>
@@ -582,21 +583,6 @@
                     <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
                 </dl>
             </section>
-            <section id="globalWarmingPotentialProduction">
-                <h4><code>globalWarmingPotentialProduction</code></h4>
-                <p><em>Global Warming Potential Production</em></p>
-                <div>Declared Global Warming Potential for production or transport stages, represented as a quantitative property with controlled units.</div>
-                <dl class="terms">
-                    <dt>Domain:</dt>
-                    <dd><a href="#EPDProduction"><code>EPDProduction</code></a> ⊔&nbsp;<a href="#EPDTransport"><code>EPDTransport</code></a></dd>
-                    <dt>Range:</dt>
-                    <dd><code>xsd:decimal</code></dd>
-                </dl>
-                <dl class="terms">
-                    <dt>Relevant <code>@context</code>:</dt>
-                    <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
-                </dl>
-            </section>
             <section id="transportId">
                 <h4><code>transportId</code></h4>
                 <p><em>Transport ID</em></p>
@@ -604,6 +590,21 @@
                 <dl class="terms">
                     <dt>Domain:</dt>
                     <dd><a href="#EPDTransport"><code>EPDTransport</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="transportTypeId">
+                <h4><code>transportTypeId</code></h4>
+                <p><em>Transport Type ID</em></p>
+                <div>Reference to the TransportType defining the shared technical characteristics of a specific TransportType.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#Transport"><code>Transport</code></a></dd>
                     <dt>Range:</dt>
                     <dd><code>xsd:anyURI</code></dd>
                 </dl>
@@ -630,10 +631,25 @@
             <section id="epdId">
                 <h4><code>epdId</code></h4>
                 <p><em>EPD ID</em></p>
-                <div>Reference to the EPD Production associated with this Declaration of Product Conformity, linking conformity statements to environmental data.</div>
+                <div>Reference to the EPD associated with this Declaration of Product Conformity, linking conformity statements to environmental data.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
                     <dd><a href="#DoPC"><code>DoPC</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="epdSubjectId">
+                <h4><code>epdSubjectId</code></h4>
+                <p><em>EPD Subject Id</em></p>
+                <div>Reference to the subject of the EPD, e.g. a ProductGroup or a TransportType.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#EPD"><code>EPD</code></a></dd>
                     <dt>Range:</dt>
                     <dd><code>xsd:anyURI</code></dd>
                 </dl>
@@ -684,7 +700,22 @@
                 </dl>
                 <dl class="terms">
                     <dt>Domain of:</dt>
-                    <dd><a href="#serviceProviderId"><code>serviceProviderId</code></a>, <a href="#timeDeparture"><code>timeDeparture</code></a>, <a href="#timeArrival"><code>timeArrival</code></a>, <a href="#globalWarmingPotentialTransport"><code>globalWarmingPotentialTransport</code></a>, <a href="#transportBatchId"><code>transportBatchId</code></a></dd>
+                    <dd><a href="#serviceProviderId"><code>serviceProviderId</code></a>, <a href="#timeDeparture"><code>timeDeparture</code></a>, <a href="#timeArrival"><code>timeArrival</code></a>, <a href="#transportBatchId"><code>transportBatchId</code></a>, <a href="#transportTypeId"><code>transportTypeId</code></a></dd>
+                    <dt>In the domain of:</dt>
+                    <dd><a href="#locationDeparture"><code>locationDeparture</code></a>, <a href="#locationArrival"><code>locationArrival</code></a></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="TransportType">
+                <h4><code>TransportType</code></h4>
+                <p><em>Transport Type</em></p>
+                <div>Groups transports in categories and defines their characteristics.</div>
+                <dl class="terms">
+                    <dt>Subclass of:</dt>
+                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
                 </dl>
                 <dl class="terms">
                     <dt>Relevant <code>@context</code>:</dt>
@@ -700,7 +731,7 @@
                     <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
                 </dl>
                 <dl class="terms">
-                    <dt>Domain of:</dt>
+                    <dt>In the domain of:</dt>
                     <dd><a href="#locationDeparture"><code>locationDeparture</code></a>, <a href="#locationArrival"><code>locationArrival</code></a>, <a href="#dppId"><code>dppId</code></a></dd>
                 </dl>
                 <dl class="terms">
@@ -718,9 +749,7 @@
                 </dl>
                 <dl class="terms">
                     <dt>Domain of:</dt>
-                    <dd><a href="#productId"><code>productId</code></a>, <a href="#name"><code>name</code></a>, <a href="#granularity"><code>granularity</code></a>, <a href="#facilityId"><code>facilityId</code></a>, <a href="#length"><code>length</code></a>, <a href="#weight"><code>weight</code></a>, <a href="#dppSchemaId"><code>dppSchemaId</code></a></dd>
-                    <dt>In the domain of:</dt>
-                    <dd><a href="#productGroupId"><code>productGroupId</code></a></dd>
+                    <dd><a href="#productId"><code>productId</code></a>, <a href="#name"><code>name</code></a>, <a href="#granularity"><code>granularity</code></a>, <a href="#facilityId"><code>facilityId</code></a>, <a href="#length"><code>length</code></a>, <a href="#weight"><code>weight</code></a>, <a href="#productGroupId"><code>productGroupId</code></a>, <a href="#dppSchemaId"><code>dppSchemaId</code></a></dd>
                 </dl>
                 <dl class="terms">
                     <dt>Relevant <code>@context</code>:</dt>
@@ -770,36 +799,17 @@
                     <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
                 </dl>
             </section>
-            <section id="EPDProduction">
-                <h4><code>EPDProduction</code></h4>
-                <p><em>EPD Production</em></p>
-                <div>Environmental Product Declaration describing environmental impacts associated with the production stage. Depending on granularity, EPDs may be modeled as information products and/or quantitative product properties.</div>
-                <dl class="terms">
-                    <dt>Subclass of:</dt>
-                    <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
-                </dl>
-                <dl class="terms">
-                    <dt>In the domain of:</dt>
-                    <dd><a href="#productGroupId"><code>productGroupId</code></a>, <a href="#globalWarmingPotentialProduction"><code>globalWarmingPotentialProduction</code></a></dd>
-                </dl>
-                <dl class="terms">
-                    <dt>Relevant <code>@context</code>:</dt>
-                    <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
-                </dl>
-            </section>
-            <section id="EPDTransport">
-                <h4><code>EPDTransport</code></h4>
-                <p><em>EPD Transport</em></p>
-                <div>Environmental Product Declaration describing environmental impacts associated with transport stages, complementing production-stage EPDs and linking to logistics and transport events.</div>
+            <section id="EPD">
+                <h4><code>EPD</code></h4>
+                <p><em>EPD</em></p>
+                <div>Environmental Product Declaration describing environmental impacts associated with the life cycle stages (production, transport, use, dismantling, ...). Depending on granularity, EPDs may be modeled as information and/or quantitative properties.</div>
                 <dl class="terms">
                     <dt>Subclass of:</dt>
                     <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
                 </dl>
                 <dl class="terms">
                     <dt>Domain of:</dt>
-                    <dd><a href="#transportId"><code>transportId</code></a></dd>
-                    <dt>In the domain of:</dt>
-                    <dd><a href="#globalWarmingPotentialProduction"><code>globalWarmingPotentialProduction</code></a></dd>
+                    <dd><a href="#globalWarmingPotential"><code>globalWarmingPotential</code></a>, <a href="#epdSubjectId"><code>epdSubjectId</code></a></dd>
                 </dl>
                 <dl class="terms">
                     <dt>Relevant <code>@context</code>:</dt>
