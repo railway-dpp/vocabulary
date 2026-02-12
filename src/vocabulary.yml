@@ -54,10 +54,12 @@ class:
       stakeholder roles within the DPP ecosystem.
     upper_value: cred:CredentialSubject
 
-  - id: TransportType
-    label: Transport Type
+  - id: ModeOfTransport
+    label: ModeOfTransport
     comment: >
-      Groups transports in categories and defines their characteristics.
+      A credential with one or more modes of vehicles used to fullfill transport order. 
+      E.g electrical engine, benzin lorry, diesel ship...) On each mode an EPD Environmental
+      Product Decleration can be callculated.    
     upper_value: cred:CredentialSubject
 
   - id: TransportBatch
