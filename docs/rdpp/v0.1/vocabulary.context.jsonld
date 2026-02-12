@@ -168,10 +168,6 @@
                 }
             }
         },
-        "Location": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#Location",
-        "transportId": {
-            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#transportId",
-            "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
-        }
+        "Location": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#Location"
     }
 }

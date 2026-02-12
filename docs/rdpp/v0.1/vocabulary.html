@@ -219,7 +219,6 @@
                         <li><a href="#timeArrival"><code>timeArrival<code></code></code></a></li>
                         <li><a href="#timeDeparture"><code>timeDeparture<code></code></code></a></li>
                         <li><a href="#transportBatchId"><code>transportBatchId<code></code></code></a></li>
-                        <li><a href="#transportId"><code>transportId<code></code></code></a></li>
                         <li><a href="#transportTypeId"><code>transportTypeId<code></code></code></a></li>
                         <li><a href="#version"><code>version<code></code></code></a></li>
                         <li><a href="#versionOfStandard"><code>versionOfStandard<code></code></code></a></li>
@@ -583,25 +582,10 @@
                     <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
                 </dl>
             </section>
-            <section id="transportId">
-                <h4><code>transportId</code></h4>
-                <p><em>Transport ID</em></p>
-                <div>Reference to the Transport event associated with this EPD Transport, enabling linkage between environmental declarations and transport activities.</div>
-                <dl class="terms">
-                    <dt>Domain:</dt>
-                    <dd><a href="#EPDTransport"><code>EPDTransport</code></a></dd>
-                    <dt>Range:</dt>
-                    <dd><code>xsd:anyURI</code></dd>
-                </dl>
-                <dl class="terms">
-                    <dt>Relevant <code>@context</code>:</dt>
-                    <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
-                </dl>
-            </section>
             <section id="transportTypeId">
                 <h4><code>transportTypeId</code></h4>
                 <p><em>Transport Type ID</em></p>
-                <div>Reference to the TransportType defining the shared technical characteristics of a specific TransportType.</div>
+                <div>Reference to the TransportType defining the shared technical characteristics of a transport.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
                     <dd><a href="#Transport"><code>Transport</code></a></dd>

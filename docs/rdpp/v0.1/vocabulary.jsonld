@@ -432,28 +432,13 @@
             "@type": "jsonld:Context"
         }]
     }, {
-        "@id": "rddp:transportId",
-        "@type": ["rdf:Property", "owl:DatatypeProperty"],
-        "rdfs:domain": "rddp:EPDTransport",
-        "rdfs:range": "xsd:anyURI",
-        "rdfs:label": "Transport ID",
-        "rdfs:comment": {
-            "@value": "<div>Reference to the Transport event associated with this EPD Transport, enabling linkage between environmental declarations and transport activities.</div>",
-            "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
-        },
-        "vs:term_status": "stable",
-        "mentioned": [{
-            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
-            "@type": "jsonld:Context"
-        }]
-    }, {
         "@id": "rddp:transportTypeId",
         "@type": ["rdf:Property", "owl:DatatypeProperty"],
         "rdfs:domain": "rddp:Transport",
         "rdfs:range": "xsd:anyURI",
         "rdfs:label": "Transport Type ID",
         "rdfs:comment": {
-            "@value": "<div>Reference to the TransportType defining the shared technical characteristics of a specific TransportType.</div>",
+            "@value": "<div>Reference to the TransportType defining the shared technical characteristics of a transport.</div>",
             "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
         },
         "vs:term_status": "stable",

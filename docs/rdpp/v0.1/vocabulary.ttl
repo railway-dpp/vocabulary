@@ -224,20 +224,11 @@ rddp:deglerationOfProductConformity a rdf:Property, owl:DatatypeProperty ;
     vs:term_status "stable" ;
 .
 
-rddp:transportId a rdf:Property, owl:DatatypeProperty ;
-    rdfs:domain rddp:EPDTransport ;
-    rdfs:range xsd:anyURI ;
-    rdfs:label "Transport ID" ;
-    rdfs:comment """<div>Reference to the Transport event associated with this EPD Transport, enabling linkage between environmental declarations and transport activities.</div>"""^^rdf:HTML ;
-    rdfs:isDefinedBy <https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#> ;
-    vs:term_status "stable" ;
-.
-
 rddp:transportTypeId a rdf:Property, owl:DatatypeProperty ;
     rdfs:domain rddp:Transport ;
     rdfs:range xsd:anyURI ;
     rdfs:label "Transport Type ID" ;
-    rdfs:comment """<div>Reference to the TransportType defining the shared technical characteristics of a specific TransportType.</div>"""^^rdf:HTML ;
+    rdfs:comment """<div>Reference to the TransportType defining the shared technical characteristics of a transport.</div>"""^^rdf:HTML ;
     rdfs:isDefinedBy <https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#> ;
     vs:term_status "stable" ;
 .
@@ -348,48 +339,4 @@ rddp:Location a rdfs:Class ;
     vs:term_status "stable" ;
 .
 
-
-
-# Context files and their mentions
-<https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1> a jsonld:Context ;
-    schema:mentions
-        rddp:DPP,
-        rddp:DoPC,
-        rddp:DppSchema,
-        rddp:EPD,
-        rddp:EUDPPRegistry,
-        rddp:Location,
-        rddp:ProductGroup,
-        rddp:Transport,
-        rddp:TransportBatch,
-        rddp:TransportType,
-        rddp:deglerationOfProductConformity,
-        rddp:dppId,
-        rddp:dppRegistrationNumber,
-        rddp:dppSchemaId,
-        rddp:economicOperatorId,
-        rddp:epdId,
-        rddp:epdSubjectId,
-        rddp:facilityId,
-        rddp:globalWarmingPotential,
-        rddp:granularity,
-        rddp:length,
-        rddp:locationArrival,
-        rddp:locationDeparture,
-        rddp:name,
-        rddp:productGroupId,
-        rddp:productId,
-        rddp:railProfile,
-        rddp:serviceProviderId,
-        rddp:steelGrade,
-        rddp:templateName,
-        rddp:timeArrival,
-        rddp:timeDeparture,
-        rddp:transportBatchId,
-        rddp:transportId,
-        rddp:transportTypeId,
-        rddp:version,
-        rddp:versionOfStandard,
-        rddp:weight ;
-.
 

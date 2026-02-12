@@ -56,7 +56,7 @@ classDiagram
     }
 
     EPD "1" --> "0..n" TransportType: epdSubjectId
-    Transport "0..n" --> "1" TransportType: transportPortId
+    Transport "0..n" --> "1" TransportType: transportTypeId
     Transport "0..n" --> "1" TransportBatch: transportBatchId
     DPP "1..n" <-- "0..n" TransportBatch: dppId
     DPP "0..n" <-- "0..1" EU-DPP-Registry: dppId
