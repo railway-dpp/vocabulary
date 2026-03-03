@@ -76,7 +76,7 @@
         "@value": "Vocabulary for Digital Product Passports (DPP) in the railway steel domain, aligned with the DPP System Standard semantic and functional data model and EN 13674-1 for rail steel acceptance.\n",
         "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
     },
-    "dc:date": "2026-02-12",
+    "dc:date": "2026-03-03",
     "rdfs_properties": [{
         "@id": "rddp:versionOfStandard",
         "@type": ["rdf:Property", "owl:DatatypeProperty"],
@@ -267,11 +267,11 @@
             "@type": "jsonld:Context"
         }]
     }, {
-        "@id": "rddp:name",
+        "@id": "rddp:dppName",
         "@type": ["rdf:Property", "owl:DatatypeProperty"],
         "rdfs:domain": "rddp:DPP",
         "rdfs:range": "xsd:string",
-        "rdfs:label": "Name",
+        "rdfs:label": "dppName",
         "rdfs:comment": {
             "@value": "<div>Human-readable name of the product or Digital Product Passport.</div>",
             "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
@@ -483,7 +483,22 @@
         "rdfs:range": "xsd:anyURI",
         "rdfs:label": "EPD Subject Id",
         "rdfs:comment": {
-            "@value": "<div>Reference to the subject of the EPD, e.g. a ProductGroup or a TransportType.</div>",
+            "@value": "<div>Reference to the subject of the EPD, e.g. a ProductGroup or a ModeOfTransport.</div>",
+            "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
+        },
+        "vs:term_status": "stable",
+        "mentioned": [{
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1",
+            "@type": "jsonld:Context"
+        }]
+    }, {
+        "@id": "rddp:typeOfVehicel",
+        "@type": ["rdf:Property", "owl:DatatypeProperty"],
+        "rdfs:domain": "rddp:modeOfTransport",
+        "rdfs:range": "xsd:anyURI",
+        "rdfs:label": "typeOfVehicel",
+        "rdfs:comment": {
+            "@value": "<div>Reference to Transport and receives epdSubject for each typeOfVehicle.</div>",
             "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
         },
         "vs:term_status": "stable",
@@ -521,12 +536,12 @@
             "@type": "jsonld:Context"
         }]
     }, {
-        "@id": "rddp:TransportType",
+        "@id": "rddp:ModeOfTransport",
         "@type": "rdfs:Class",
         "rdfs:subClassOf": ["cred:CredentialSubject"],
-        "rdfs:label": "Transport Type",
+        "rdfs:label": "ModeOfTransport",
         "rdfs:comment": {
-            "@value": "<div>Groups transports in categories and defines their characteristics.</div>",
+            "@value": "<div>A credential with one or more modes of vehicles used to fullfill transport order. E.g electrical engine, benzin lorry, diesel ship...) On each mode an EPD Environmental Product Decleration can be callculated.</div>",
             "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
         },
         "vs:term_status": "stable",

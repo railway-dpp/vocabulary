@@ -125,7 +125,7 @@
         <dl>
             <dt>Published:</dt>
             <dd>
-                <time property="dc:date" id="time">2026-02-12</time>
+                <time property="dc:date" id="time">2026-03-03</time>
             </dd>
             <dt>Version Info:</dt>
             <dd>0.1</dd>
@@ -198,12 +198,13 @@
                         <li><a href="#EPD"><code>EPD<code></code></code></a></li>
                         <li><a href="#EUDPPRegistry"><code>EUDPPRegistry<code></code></code></a></li>
                         <li><a href="#Location"><code>Location<code></code></code></a></li>
+                        <li><a href="#ModeOfTransport"><code>ModeOfTransport<code></code></code></a></li>
                         <li><a href="#ProductGroup"><code>ProductGroup<code></code></code></a></li>
                         <li><a href="#Transport"><code>Transport<code></code></code></a></li>
                         <li><a href="#TransportBatch"><code>TransportBatch<code></code></code></a></li>
-                        <li><a href="#TransportType"><code>TransportType<code></code></code></a></li>
                         <li><a href="#deglerationOfProductConformity"><code>deglerationOfProductConformity<code></code></code></a></li>
                         <li><a href="#dppId"><code>dppId<code></code></code></a></li>
+                        <li><a href="#dppName"><code>dppName<code></code></code></a></li>
                         <li><a href="#dppRegistrationNumber"><code>dppRegistrationNumber<code></code></code></a></li>
                         <li><a href="#dppSchemaId"><code>dppSchemaId<code></code></code></a></li>
                         <li><a href="#economicOperatorId"><code>economicOperatorId<code></code></code></a></li>
@@ -215,7 +216,6 @@
                         <li><a href="#length"><code>length<code></code></code></a></li>
                         <li><a href="#locationArrival"><code>locationArrival<code></code></code></a></li>
                         <li><a href="#locationDeparture"><code>locationDeparture<code></code></code></a></li>
-                        <li><a href="#name"><code>name<code></code></code></a></li>
                         <li><a href="#productGroupId"><code>productGroupId<code></code></code></a></li>
                         <li><a href="#productId"><code>productId<code></code></code></a></li>
                         <li><a href="#railProfile"><code>railProfile<code></code></code></a></li>
@@ -226,6 +226,7 @@
                         <li><a href="#timeDeparture"><code>timeDeparture<code></code></code></a></li>
                         <li><a href="#transportBatchId"><code>transportBatchId<code></code></code></a></li>
                         <li><a href="#transportTypeId"><code>transportTypeId<code></code></code></a></li>
+                        <li><a href="#typeOfVehicel"><code>typeOfVehicel<code></code></code></a></li>
                         <li><a href="#version"><code>version<code></code></code></a></li>
                         <li><a href="#versionOfStandard"><code>versionOfStandard<code></code></code></a></li>
                         <li><a href="#weight"><code>weight<code></code></code></a></li>
@@ -423,9 +424,9 @@
                     <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
                 </dl>
             </section>
-            <section id="name">
-                <h4><code>name</code></h4>
-                <p><em>Name</em></p>
+            <section id="dppName">
+                <h4><code>dppName</code></h4>
+                <p><em>dppName</em></p>
                 <div>Human-readable name of the product or Digital Product Passport.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
@@ -636,10 +637,25 @@
             <section id="epdSubjectId">
                 <h4><code>epdSubjectId</code></h4>
                 <p><em>EPD Subject Id</em></p>
-                <div>Reference to the subject of the EPD, e.g. a ProductGroup or a TransportType.</div>
+                <div>Reference to the subject of the EPD, e.g. a ProductGroup or a ModeOfTransport.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
                     <dd><a href="#EPD"><code>EPD</code></a></dd>
+                    <dt>Range:</dt>
+                    <dd><code>xsd:anyURI</code></dd>
+                </dl>
+                <dl class="terms">
+                    <dt>Relevant <code>@context</code>:</dt>
+                    <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
+                </dl>
+            </section>
+            <section id="typeOfVehicel">
+                <h4><code>typeOfVehicel</code></h4>
+                <p><em>typeOfVehicel</em></p>
+                <div>Reference to Transport and receives epdSubject for each typeOfVehicle.</div>
+                <dl class="terms">
+                    <dt>Domain:</dt>
+                    <dd><a href="#modeOfTransport"><code>modeOfTransport</code></a></dd>
                     <dt>Range:</dt>
                     <dd><code>xsd:anyURI</code></dd>
                 </dl>
@@ -699,10 +715,10 @@
                     <dd><a href="https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1"><code>https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1</code></a></dd>
                 </dl>
             </section>
-            <section id="TransportType">
-                <h4><code>TransportType</code></h4>
-                <p><em>Transport Type</em></p>
-                <div>Groups transports in categories and defines their characteristics.</div>
+            <section id="ModeOfTransport">
+                <h4><code>ModeOfTransport</code></h4>
+                <p><em>ModeOfTransport</em></p>
+                <div>A credential with one or more modes of vehicles used to fullfill transport order. E.g electrical engine, benzin lorry, diesel ship...) On each mode an EPD Environmental Product Decleration can be callculated.</div>
                 <dl class="terms">
                     <dt>Subclass of:</dt>
                     <dd><a href="#61feeeb010c846a2fd88f09b64830beedf226f55188b3ccd19c17548d82c87a1"><code>CredentialSubject</code></a></dd>
@@ -739,7 +755,7 @@
                 </dl>
                 <dl class="terms">
                     <dt>Domain of:</dt>
-                    <dd><a href="#productId"><code>productId</code></a>, <a href="#name"><code>name</code></a>, <a href="#granularity"><code>granularity</code></a>, <a href="#facilityId"><code>facilityId</code></a>, <a href="#length"><code>length</code></a>, <a href="#weight"><code>weight</code></a>, <a href="#productGroupId"><code>productGroupId</code></a>, <a href="#dppSchemaId"><code>dppSchemaId</code></a></dd>
+                    <dd><a href="#productId"><code>productId</code></a>, <a href="#dppName"><code>dppName</code></a>, <a href="#granularity"><code>granularity</code></a>, <a href="#facilityId"><code>facilityId</code></a>, <a href="#length"><code>length</code></a>, <a href="#weight"><code>weight</code></a>, <a href="#productGroupId"><code>productGroupId</code></a>, <a href="#dppSchemaId"><code>dppSchemaId</code></a></dd>
                 </dl>
                 <dl class="terms">
                     <dt>Relevant <code>@context</code>:</dt>

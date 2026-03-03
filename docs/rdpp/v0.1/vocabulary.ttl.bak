@@ -351,3 +351,45 @@ rddp:Location a rdfs:Class ;
 
 
 # Context files and their mentions
+<https://railway-dpp.github.io/vocabulary/rdpp-context/v0.1> a jsonld:Context ;
+    schema:mentions
+        rddp:DPP,
+        rddp:DoPC,
+        rddp:DppSchema,
+        rddp:EPD,
+        rddp:EUDPPRegistry,
+        rddp:Location,
+        rddp:ModeOfTransport,
+        rddp:ProductGroup,
+        rddp:Transport,
+        rddp:TransportBatch,
+        rddp:deglerationOfProductConformity,
+        rddp:dppId,
+        rddp:dppName,
+        rddp:dppRegistrationNumber,
+        rddp:dppSchemaId,
+        rddp:economicOperatorId,
+        rddp:epdId,
+        rddp:epdSubjectId,
+        rddp:facilityId,
+        rddp:globalWarmingPotential,
+        rddp:granularity,
+        rddp:length,
+        rddp:locationArrival,
+        rddp:locationDeparture,
+        rddp:productGroupId,
+        rddp:productId,
+        rddp:railProfile,
+        rddp:serviceProviderId,
+        rddp:steelGrade,
+        rddp:templateName,
+        rddp:timeArrival,
+        rddp:timeDeparture,
+        rddp:transportBatchId,
+        rddp:transportTypeId,
+        rddp:typeOfVehicel,
+        rddp:version,
+        rddp:versionOfStandard,
+        rddp:weight ;
+.
+

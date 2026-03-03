@@ -59,7 +59,7 @@
                 }
             }
         },
-        "TransportType": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#TransportType",
+        "ModeOfTransport": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#ModeOfTransport",
         "TransportBatch": {
             "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#TransportBatch",
             "@context": {
@@ -86,8 +86,8 @@
                     "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#productId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
                 },
-                "name": {
-                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#name",
+                "dppName": {
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#dppName",
                     "@type": "http://www.w3.org/2001/XMLSchema#string"
                 },
                 "granularity": {
@@ -168,6 +168,10 @@
                 }
             }
         },
-        "Location": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#Location"
+        "Location": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#Location",
+        "typeOfVehicel": {
+            "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#typeOfVehicel",
+            "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
+        }
     }
 }

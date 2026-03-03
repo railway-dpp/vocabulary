@@ -57,9 +57,9 @@ class:
   - id: ModeOfTransport
     label: ModeOfTransport
     comment: >
-      A credential with one or more modes of vehicles used to fullfill transport order. 
+      A credential with one or more modes of vehicles used to fullfill transport order.
       E.g electrical engine, benzin lorry, diesel ship...) On each mode an EPD Environmental
-      Product Decleration can be callculated.    
+      Product Decleration can be callculated.
     upper_value: cred:CredentialSubject
 
   - id: TransportBatch
@@ -233,8 +233,8 @@ property:
     domain: DPP
     range: xsd:anyURI
 
-  - id: name
-    label: Name
+  - id: dppName
+    label: dppName
     comment: >
       Human-readable name of the product or Digital Product Passport.
     domain: DPP
