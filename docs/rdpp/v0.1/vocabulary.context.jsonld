@@ -41,6 +41,10 @@
                     "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#timeArrival",
                     "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
                 },
+                "globalWarmingPotential": {
+                    "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#globalWarmingPotential",
+                    "@type": "http://www.w3.org/2001/XMLSchema#decimal"
+                },
                 "transportBatchId": {
                     "@id": "https://railway-dpp.github.io/vocabulary/rdpp/v0.1/vocabulary.html#transportBatchId",
                     "@type": "http://www.w3.org/2001/XMLSchema#anyURI"

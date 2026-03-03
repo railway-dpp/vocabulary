@@ -170,7 +170,10 @@
     }, {
         "@id": "rddp:globalWarmingPotential",
         "@type": ["rdf:Property", "owl:DatatypeProperty"],
-        "rdfs:domain": "rddp:EPD",
+        "rdfs:domain": {
+            "@type": "owl:Class",
+            "owl:unionOf": ["rddp:EPD", "rddp:Transport"]
+        },
         "rdfs:range": "xsd:decimal",
         "rdfs:label": "Global Warming Potential",
         "rdfs:comment": {

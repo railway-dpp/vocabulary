@@ -340,7 +340,7 @@
                 <div>Environmental impact metric expressing the Global Warming Potential associated with a particular life cycle stage. Represented as a property with controlled units defined via the repository model.</div>
                 <dl class="terms">
                     <dt>Domain:</dt>
-                    <dd><a href="#EPD"><code>EPD</code></a></dd>
+                    <dd><a href="#EPD"><code>EPD</code></a> ⊔&nbsp;<a href="#Transport"><code>Transport</code></a></dd>
                     <dt>Range:</dt>
                     <dd><code>xsd:decimal</code></dd>
                 </dl>
@@ -708,7 +708,7 @@
                     <dt>Domain of:</dt>
                     <dd><a href="#serviceProviderId"><code>serviceProviderId</code></a>, <a href="#timeDeparture"><code>timeDeparture</code></a>, <a href="#timeArrival"><code>timeArrival</code></a>, <a href="#transportBatchId"><code>transportBatchId</code></a>, <a href="#transportTypeId"><code>transportTypeId</code></a></dd>
                     <dt>In the domain of:</dt>
-                    <dd><a href="#locationDeparture"><code>locationDeparture</code></a>, <a href="#locationArrival"><code>locationArrival</code></a></dd>
+                    <dd><a href="#globalWarmingPotential"><code>globalWarmingPotential</code></a>, <a href="#locationDeparture"><code>locationDeparture</code></a>, <a href="#locationArrival"><code>locationArrival</code></a></dd>
                 </dl>
                 <dl class="terms">
                     <dt>Relevant <code>@context</code>:</dt>
@@ -815,7 +815,9 @@
                 </dl>
                 <dl class="terms">
                     <dt>Domain of:</dt>
-                    <dd><a href="#globalWarmingPotential"><code>globalWarmingPotential</code></a>, <a href="#epdSubjectId"><code>epdSubjectId</code></a></dd>
+                    <dd><a href="#epdSubjectId"><code>epdSubjectId</code></a></dd>
+                    <dt>In the domain of:</dt>
+                    <dd><a href="#globalWarmingPotential"><code>globalWarmingPotential</code></a></dd>
                 </dl>
                 <dl class="terms">
                     <dt>Relevant <code>@context</code>:</dt>

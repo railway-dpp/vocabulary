@@ -185,7 +185,9 @@ property:
       Environmental impact metric expressing the Global Warming Potential
       associated with a particular life cycle stage. Represented as a property
       with controlled units defined via the repository model.
-    domain: EPD
+    domain:
+      - EPD
+      - Transport
     range: xsd:decimal
 
   - id: transportBatchId

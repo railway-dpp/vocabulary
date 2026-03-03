@@ -72,7 +72,7 @@ rddp:timeArrival a rdf:Property, owl:DatatypeProperty ;
 .
 
 rddp:globalWarmingPotential a rdf:Property, owl:DatatypeProperty ;
-    rdfs:domain rddp:EPD ;
+    rdfs:domain [ a owl:Class; owl:unionOf (rddp:EPD rddp:Transport) ] ;
     rdfs:range xsd:decimal ;
     rdfs:label "Global Warming Potential" ;
     rdfs:comment """<div>Environmental impact metric expressing the Global Warming Potential associated with a particular life cycle stage. Represented as a property with controlled units defined via the repository model.</div>"""^^rdf:HTML ;
